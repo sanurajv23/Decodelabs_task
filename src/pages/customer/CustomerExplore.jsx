@@ -1,0 +1,298 @@
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import "./CustomerExplore.css";
+
+function CustomerExplore() {
+  const [query, setQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [toast, setToast] = useState("");
+  const toastTimer = useRef(null);
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    const viewport = document.querySelector('meta[name="viewport"]');
+    const previousViewport = viewport?.getAttribute("content");
+    document.title = "HireMe — Explore Services";
+    viewport?.setAttribute("content", "width=device-width, initial-scale=1, viewport-fit=cover");
+    return () => {
+      clearTimeout(toastTimer.current);
+      document.title = previousTitle;
+      if (viewport) {
+        if (previousViewport === null) viewport.removeAttribute("content");
+        else viewport.setAttribute("content", previousViewport);
+      }
+    };
+  }, []);
+
+  function showToast(message) {
+    clearTimeout(toastTimer.current);
+    setToast(message);
+    toastTimer.current = setTimeout(() => setToast(""), 2600);
+  }
+
+  function matchesService(category, text) {
+    return (selectedCategory === "all" || selectedCategory === category)
+      && text.toLowerCase().includes(query.toLowerCase());
+  }
+
+  function scrollToTop(event) {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    mainRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // The source has no drawer markup. Keep details feedback until its separate page is migrated.
+  return (
+    <div className="customer-explore">
+      <div id="appToast" className={`app-toast${toast ? " visible" : ""}`} role="status" aria-live="polite">{toast}</div>
+      <div className="app-shell">
+      <header className="app-header">
+      <div className="header-container">
+      <button id="hamburgerMenuBtn" className="menu-btn" aria-label="Open menu">
+      <span className="menu-bar">
+      </span>
+      <span className="menu-bar">
+      </span>
+      <span className="menu-bar">
+      </span>
+      </button>
+      <Link to="/customer/home" className="brand-logo">
+      <span>Hire<span className="logo-accent">Me</span>
+      </span>
+      <span className="brand-tagline">Work. Earn. Grow.</span>
+      </Link>
+      <div className="header-actions">
+      <button id="notificationBtn" onClick={() => showToast("You have 1 new notification.")} className="notification-btn customer-notification" aria-label="Notifications">
+      <svg aria-hidden="true" className="notification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+      <path d="M13.7 21a2 2 0 0 1-3.4 0"/>
+      </svg>
+      <i>
+      </i>
+      </button>
+      <Link to="/customer/profile" className="user-avatar-link" aria-label="Customer profile">
+      <div className="user-avatar-wrapper">
+      <svg aria-hidden="true" className="avatar-silhouette" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Z"/>
+      </svg>
+      <span className="online-status-dot">
+      </span>
+      </div>
+      </Link>
+      </div>
+      </div>
+      </header>
+      <main className="explore-main" ref={mainRef}>
+      <section className="explore-intro">
+      <h1>Explore Services</h1>
+      <p>Find trusted professionals near you</p>
+      </section>
+      <form className="explore-search" role="search" onSubmit={(event) => event.preventDefault()}>
+      <label>
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+      <circle cx="11" cy="11" r="6.5"/>
+      <path d="m16 16 5 5"/>
+      </svg>
+      <input id="exploreSearch" value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder="Search for services..." aria-label="Search for services" />
+      </label>
+      <button id="locationButton" onClick={() => showToast("Location selection will be available soon.")} type="button">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.3">
+      <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+      <circle cx="12" cy="10" r="2.5"/>
+      </svg>
+      <span>Colombo</span>
+      <b>⌄</b>
+      </button>
+      </form>
+      <section className="explore-categories" aria-label="Service categories">
+      <button className={`explore-category${selectedCategory === "all" ? " active" : ""}`} data-category="all" aria-pressed={selectedCategory === "all"} onClick={() => setSelectedCategory("all")}>
+      <i>▦</i>
+      <span>All</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "electrical" ? " active" : ""}`} data-category="electrical" aria-pressed={selectedCategory === "electrical"} onClick={() => setSelectedCategory("electrical")}>
+      <i className="orange">ϟ</i>
+      <span>Electrical</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "plumbing" ? " active" : ""}`} data-category="plumbing" aria-pressed={selectedCategory === "plumbing"} onClick={() => setSelectedCategory("plumbing")}>
+      <i className="red">♢</i>
+      <span>Plumbing</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "painting" ? " active" : ""}`} data-category="painting" aria-pressed={selectedCategory === "painting"} onClick={() => setSelectedCategory("painting")}>
+      <i className="purple">▰</i>
+      <span>Painting</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "cleaning" ? " active" : ""}`} data-category="cleaning" aria-pressed={selectedCategory === "cleaning"} onClick={() => setSelectedCategory("cleaning")}>
+      <i className="green">⌁</i>
+      <span>Cleaning</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "ac" ? " active" : ""}`} data-category="ac" aria-pressed={selectedCategory === "ac"} onClick={() => setSelectedCategory("ac")}>
+      <i className="cyan">✳</i>
+      <span>AC Repair</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "tv" ? " active" : ""}`} data-category="tv" aria-pressed={selectedCategory === "tv"} onClick={() => setSelectedCategory("tv")}>
+      <i className="orange">▭</i>
+      <span>TV Mounting</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "carpentry" ? " active" : ""}`} data-category="carpentry" aria-pressed={selectedCategory === "carpentry"} onClick={() => setSelectedCategory("carpentry")}>
+      <i className="brown">⚒</i>
+      <span>Carpentry</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "gardening" ? " active" : ""}`} data-category="gardening" aria-pressed={selectedCategory === "gardening"} onClick={() => setSelectedCategory("gardening")}>
+      <i className="green">◒</i>
+      <span>Gardening</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "moving" ? " active" : ""}`} data-category="moving" aria-pressed={selectedCategory === "moving"} onClick={() => setSelectedCategory("moving")}>
+      <i>▰</i>
+      <span>Moving</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "appliance" ? " active" : ""}`} data-category="appliance" aria-pressed={selectedCategory === "appliance"} onClick={() => setSelectedCategory("appliance")}>
+      <i>⚙</i>
+      <span>Appliance Repair</span>
+      </button>
+      <button className={`explore-category${selectedCategory === "more" ? " active" : ""}`} data-category="more" aria-pressed={selectedCategory === "more"} onClick={() => setSelectedCategory("more")}>
+      <i>•••</i>
+      <span>More</span>
+      </button>
+      </section>
+      <section className="nearby">
+      <div className="nearby-header">
+      <h2>Popular Near You</h2>
+      <button id="seeAllButton" onClick={() => showToast("All services are shown below.")}>See All <b>›</b>
+      </button>
+      </div>
+      <div id="serviceResults" className="service-results">
+      <article className="nearby-card" data-category="electrical" hidden={!matchesService("electrical", "ϟElectrical Repair★ 4.8 (120+ reviews)⌖ Colombo 06  •  2.3 km awayFromLKR 2,500View Details ›")}>
+      <i className="nearby-icon orange">ϟ</i>
+      <div className="nearby-info">
+      <h3>Electrical Repair</h3>
+      <p className="nearby-rating">★ 4.8 <span>(120+ reviews)</span>
+      </p>
+      <p className="nearby-place">⌖ Colombo 06&nbsp; • &nbsp;2.3 km away</p>
+      </div>
+      <div className="nearby-price">
+      <small>From</small>
+      <strong>LKR 2,500</strong>
+      <button type="button" onClick={() => showToast("Service details will be available soon.")}>View Details <b>›</b>
+      </button>
+      </div>
+      </article>
+      <article className="nearby-card" data-category="plumbing" hidden={!matchesService("plumbing", "♢Plumbing Service★ 4.7 (98+ reviews)⌖ Colombo 05  •  1.8 km awayFromLKR 2,000View Details ›")}>
+      <i className="nearby-icon red">♢</i>
+      <div className="nearby-info">
+      <h3>Plumbing Service</h3>
+      <p className="nearby-rating">★ 4.7 <span>(98+ reviews)</span>
+      </p>
+      <p className="nearby-place">⌖ Colombo 05&nbsp; • &nbsp;1.8 km away</p>
+      </div>
+      <div className="nearby-price">
+      <small>From</small>
+      <strong>LKR 2,000</strong>
+      <button type="button" onClick={() => showToast("Service details will be available soon.")}>View Details <b>›</b>
+      </button>
+      </div>
+      </article>
+      <article className="nearby-card" data-category="painting" hidden={!matchesService("painting", "▰Painting Service★ 4.6 (64+ reviews)⌖ Colombo 04  •  3.1 km awayFromLKR 3,000View Details ›")}>
+      <i className="nearby-icon purple">▰</i>
+      <div className="nearby-info">
+      <h3>Painting Service</h3>
+      <p className="nearby-rating">★ 4.6 <span>(64+ reviews)</span>
+      </p>
+      <p className="nearby-place">⌖ Colombo 04&nbsp; • &nbsp;3.1 km away</p>
+      </div>
+      <div className="nearby-price">
+      <small>From</small>
+      <strong>LKR 3,000</strong>
+      <button type="button" onClick={() => showToast("Service details will be available soon.")}>View Details <b>›</b>
+      </button>
+      </div>
+      </article>
+      <article className="nearby-card" data-category="cleaning" hidden={!matchesService("cleaning", "⌁Home Cleaning★ 4.8 (210+ reviews)⌖ Colombo 03  •  2.0 km awayFromLKR 1,800View Details ›")}>
+      <i className="nearby-icon green">⌁</i>
+      <div className="nearby-info">
+      <h3>Home Cleaning</h3>
+      <p className="nearby-rating">★ 4.8 <span>(210+ reviews)</span>
+      </p>
+      <p className="nearby-place">⌖ Colombo 03&nbsp; • &nbsp;2.0 km away</p>
+      </div>
+      <div className="nearby-price">
+      <small>From</small>
+      <strong>LKR 1,800</strong>
+      <button type="button" onClick={() => showToast("Service details will be available soon.")}>View Details <b>›</b>
+      </button>
+      </div>
+      </article>
+      <article className="nearby-card" data-category="ac" hidden={!matchesService("ac", "✳AC Repair★ 4.5 (75+ reviews)⌖ Colombo 06  •  4.5 km awayFromLKR 3,500View Details ›")}>
+      <i className="nearby-icon cyan">✳</i>
+      <div className="nearby-info">
+      <h3>AC Repair</h3>
+      <p className="nearby-rating">★ 4.5 <span>(75+ reviews)</span>
+      </p>
+      <p className="nearby-place">⌖ Colombo 06&nbsp; • &nbsp;4.5 km away</p>
+      </div>
+      <div className="nearby-price">
+      <small>From</small>
+      <strong>LKR 3,500</strong>
+      <button type="button" onClick={() => showToast("Service details will be available soon.")}>View Details <b>›</b>
+      </button>
+      </div>
+      </article>
+      <article className="nearby-card" data-category="tv" hidden={!matchesService("tv", "▭TV Mounting★ 4.7 (60+ reviews)⌖ Colombo 05  •  2.7 km awayFromLKR 2,200View Details ›")}>
+      <i className="nearby-icon orange">▭</i>
+      <div className="nearby-info">
+      <h3>TV Mounting</h3>
+      <p className="nearby-rating">★ 4.7 <span>(60+ reviews)</span>
+      </p>
+      <p className="nearby-place">⌖ Colombo 05&nbsp; • &nbsp;2.7 km away</p>
+      </div>
+      <div className="nearby-price">
+      <small>From</small>
+      <strong>LKR 2,200</strong>
+      <button type="button" onClick={() => showToast("Service details will be available soon.")}>View Details <b>›</b>
+      </button>
+      </div>
+      </article>
+      </div>
+      </section>
+      </main>
+      <nav className="bottom-nav-bar" aria-label="Customer navigation">
+      <ul className="bottom-nav-list">
+      <li>
+      <Link to="/customer/home" className="nav-tab-link">
+      <span className="nav-icon-box">⌂</span>
+      <span className="nav-tab-label">Home</span>
+      </Link>
+      </li>
+      <li>
+      <Link to="/customer/explore" className="nav-tab-link active" onClick={scrollToTop} aria-current="page">
+      <span className="nav-icon-box">⌕</span>
+      <span className="nav-tab-label">Explore</span>
+      </Link>
+      </li>
+      <li>
+      <Link to="/customer/bookings" className="nav-tab-link">
+      <span className="nav-icon-box">▣</span>
+      <span className="nav-tab-label">My Bookings</span>
+      </Link>
+      </li>
+      <li>
+      <Link to="/customer/messages" className="nav-tab-link">
+      <span className="nav-icon-box">▰</span>
+      <span className="nav-tab-label">Messages</span>
+      </Link>
+      </li>
+      <li>
+      <Link to="/customer/profile" className="nav-tab-link">
+      <span className="nav-icon-box">♟</span>
+      <span className="nav-tab-label">Profile</span>
+      </Link>
+      </li>
+      </ul>
+      </nav>
+      </div>
+    </div>
+  );
+}
+
+export default CustomerExplore;

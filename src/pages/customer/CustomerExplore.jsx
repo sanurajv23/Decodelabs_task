@@ -1,5 +1,9 @@
+import AppHeader from "../../components/AppHeader";
+import AppShell from "../../components/AppShell";
+import BottomNavigation from "../../components/BottomNavigation";
+import HireMeIcon from "../../components/HireMeIcon";
+import Toast from "../../components/Toast";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import "./CustomerExplore.css";
 
 function CustomerExplore() {
@@ -46,44 +50,14 @@ function CustomerExplore() {
   // The source has no drawer markup. Keep details feedback until its separate page is migrated.
   return (
     <div className="customer-explore">
-      <div id="appToast" className={`app-toast${toast ? " visible" : ""}`} role="status" aria-live="polite">{toast}</div>
-      <div className="app-shell">
-      <header className="app-header">
-      <div className="header-container">
-      <button id="hamburgerMenuBtn" className="menu-btn" aria-label="Open menu">
-      <span className="menu-bar">
-      </span>
-      <span className="menu-bar">
-      </span>
-      <span className="menu-bar">
-      </span>
-      </button>
-      <Link to="/customer/home" className="brand-logo">
-      <span>Hire<span className="logo-accent">Me</span>
-      </span>
-      <span className="brand-tagline">Work. Earn. Grow.</span>
-      </Link>
-      <div className="header-actions">
-      <button id="notificationBtn" onClick={() => showToast("You have 1 new notification.")} className="notification-btn customer-notification" aria-label="Notifications">
-      <svg aria-hidden="true" className="notification-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
-      <path d="M13.7 21a2 2 0 0 1-3.4 0"/>
-      </svg>
-      <i>
-      </i>
-      </button>
-      <Link to="/customer/profile" className="user-avatar-link" aria-label="Customer profile">
-      <div className="user-avatar-wrapper">
-      <svg aria-hidden="true" className="avatar-silhouette" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Z"/>
-      </svg>
-      <span className="online-status-dot">
-      </span>
-      </div>
-      </Link>
-      </div>
-      </div>
-      </header>
+      <Toast message={toast} />
+      <AppShell>
+        <AppHeader
+          role="customer"
+          onMenuClick={() => showToast("Navigation menu is not available yet.")}
+          onNotificationClick={() => showToast("You have 1 new notification.")}
+          onLogoClick={scrollToTop}
+        />
       <main className="explore-main" ref={mainRef}>
       <section className="explore-intro">
       <h1>Explore Services</h1>
@@ -91,10 +65,7 @@ function CustomerExplore() {
       </section>
       <form className="explore-search" role="search" onSubmit={(event) => event.preventDefault()}>
       <label>
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-      <circle cx="11" cy="11" r="6.5"/>
-      <path d="m16 16 5 5"/>
-      </svg>
+      <HireMeIcon name="search" />
       <input id="exploreSearch" value={query} onChange={(event) => setQuery(event.target.value)} type="search" placeholder="Search for services..." aria-label="Search for services" />
       </label>
       <button id="locationButton" onClick={() => showToast("Location selection will be available soon.")} type="button">
@@ -256,41 +227,8 @@ function CustomerExplore() {
       </div>
       </section>
       </main>
-      <nav className="bottom-nav-bar" aria-label="Customer navigation">
-      <ul className="bottom-nav-list">
-      <li>
-      <Link to="/customer/home" className="nav-tab-link">
-      <span className="nav-icon-box">⌂</span>
-      <span className="nav-tab-label">Home</span>
-      </Link>
-      </li>
-      <li>
-      <Link to="/customer/explore" className="nav-tab-link active" onClick={scrollToTop} aria-current="page">
-      <span className="nav-icon-box">⌕</span>
-      <span className="nav-tab-label">Explore</span>
-      </Link>
-      </li>
-      <li>
-      <Link to="/customer/bookings" className="nav-tab-link">
-      <span className="nav-icon-box">▣</span>
-      <span className="nav-tab-label">My Bookings</span>
-      </Link>
-      </li>
-      <li>
-      <Link to="/customer/messages" className="nav-tab-link">
-      <span className="nav-icon-box">▰</span>
-      <span className="nav-tab-label">Messages</span>
-      </Link>
-      </li>
-      <li>
-      <Link to="/customer/profile" className="nav-tab-link">
-      <span className="nav-icon-box">♟</span>
-      <span className="nav-tab-label">Profile</span>
-      </Link>
-      </li>
-      </ul>
-      </nav>
-      </div>
+        <BottomNavigation role="customer" onActiveTabClick={scrollToTop} />
+      </AppShell>
     </div>
   );
 }

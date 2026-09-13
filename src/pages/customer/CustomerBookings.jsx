@@ -1,5 +1,9 @@
+import AppHeader from "../../components/AppHeader";
+import AppShell from "../../components/AppShell";
+import BottomNavigation from "../../components/BottomNavigation";
+import HireMeIcon from "../../components/HireMeIcon";
+import Toast from "../../components/Toast";
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import "./CustomerBookings.css";
 
 function CustomerBookings() {
@@ -46,44 +50,14 @@ function CustomerBookings() {
 
   return (
     <div className="bookings">
-      <div id="appToast" className={`app-toast${toast ? " visible" : ""}`} role="status" aria-live="polite">{toast}</div>
-      <div className="app-shell">
-      <header className="app-header">
-      <div className="header-container">
-      <button id="hamburgerMenuBtn" onClick={() => showToast("This option will be available shortly.")} className="menu-btn" type="button" aria-label="Open menu">
-      <span className="menu-bar">
-      </span>
-      <span className="menu-bar">
-      </span>
-      <span className="menu-bar">
-      </span>
-      </button>
-      <Link to="/customer/home" className="brand-logo" aria-label="HireMe home">
-      <span>Hire<span className="logo-accent">Me</span>
-      </span>
-      <span className="brand-tagline">Work. Earn. Grow.</span>
-      </Link>
-      <div className="header-actions">
-      <button id="notificationBtn" onClick={() => showToast("This option will be available shortly.")} className="notification-btn" type="button" aria-label="Notifications">
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-      <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
-      <path d="M10 21h4"/>
-      </svg>
-      <i>
-      </i>
-      </button>
-      <Link to="/customer/profile" className="user-avatar-link" aria-label="Customer profile">
-      <span className="user-avatar-wrapper">
-      <svg aria-hidden="true" className="avatar-silhouette" viewBox="0 0 24 24">
-      <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Z"/>
-      </svg>
-      <span className="online-status-dot">
-      </span>
-      </span>
-      </Link>
-      </div>
-      </div>
-      </header>
+      <Toast message={toast} />
+      <AppShell>
+        <AppHeader
+          role="customer"
+          onMenuClick={() => showToast("This option will be available shortly.")}
+          onNotificationClick={() => showToast("This option will be available shortly.")}
+          onLogoClick={scrollToTop}
+        />
       <main className="bookings-content" ref={mainRef}>
       <section className="bookings-heading">
       <h1>My Bookings</h1>
@@ -160,7 +134,7 @@ function CustomerBookings() {
       <span className="status progress">In Progress</span>
       <button className="card-arrow" onClick={() => showToast("This option will be available shortly.")} type="button" aria-label="View Home Cleaning booking">›</button>
       <footer>
-      <button className="outline-action message" onClick={() => showToast("Messaging is not yet available.")} type="button">▣ <span>Message Worker</span>
+      <button className="outline-action message" onClick={() => showToast("Messaging is not yet available.")} type="button"><HireMeIcon name="messages" /><span>Message Worker</span>
       </button>
       <button className="outline-action call" onClick={() => showToast("Worker contact details will be available shortly.")} type="button">⌕ <span>Call Worker</span>
       </button>
@@ -211,41 +185,8 @@ function CustomerBookings() {
       </article>
       </section>
       </main>
-      <nav className="bottom-nav-bar" aria-label="Customer navigation">
-      <ul className="bottom-nav-list">
-      <li>
-      <Link to="/customer/home" className="nav-tab-link">
-      <span className="nav-icon-box">⌂</span>
-      <span className="nav-tab-label">Home</span>
-      </Link>
-      </li>
-      <li>
-      <Link to="/customer/explore" className="nav-tab-link">
-      <span className="nav-icon-box">⌕</span>
-      <span className="nav-tab-label">Explore</span>
-      </Link>
-      </li>
-      <li>
-      <Link to="/customer/bookings" className="nav-tab-link active" onClick={scrollToTop} aria-current="page">
-      <span className="nav-icon-box">▣</span>
-      <span className="nav-tab-label">My Bookings</span>
-      </Link>
-      </li>
-      <li>
-      <Link to="/customer/messages" className="nav-tab-link">
-      <span className="nav-icon-box">▪▪</span>
-      <span className="nav-tab-label">Messages</span>
-      </Link>
-      </li>
-      <li>
-      <Link to="/customer/profile" className="nav-tab-link">
-      <span className="nav-icon-box">●</span>
-      <span className="nav-tab-label">Profile</span>
-      </Link>
-      </li>
-      </ul>
-      </nav>
-      </div>
+        <BottomNavigation role="customer" onActiveTabClick={scrollToTop} />
+      </AppShell>
     </div>
   );
 }

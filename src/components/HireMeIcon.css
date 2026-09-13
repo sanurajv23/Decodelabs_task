@@ -1,0 +1,34 @@
+/* A single visual definition; page SVG selectors must not change shared icons. */
+#root .hireme-icon, #root .hireme-glyph {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  flex: 0 0 24px;
+  vertical-align: middle;
+  color: #617aaf;
+  filter: none;
+  transform: none;
+  margin: 0;
+  padding: 0;
+}
+#root .hireme-icon { fill: currentColor; stroke: none; }
+#root .hireme-icon-outline { fill: none; stroke: currentColor; stroke-width: 2; }
+#root .hireme-icon[data-icon="search"] { stroke-width: 2.5; }
+#root .hireme-icon[data-icon="notifications"] { color: #394b88; }
+#root .hireme-glyph { font: 23px/24px 'Plus Jakarta Sans', system-ui, sans-serif; text-align: center; }
+#root :is(.nav-tab-link.active, .drawer-menu-link.active) > .hireme-icon,
+#root .nav-tab-link.active .hireme-icon,
+#root .nav-tab-link.active .hireme-glyph { color: #073cff; }
+#root .hireme-menu-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+#root .hireme-menu-icon > span { display: block; width: 19px; height: 2px; margin: 0; padding: 0; border-radius: 4px; background: #465dc5; }
+#root .outline-action:has(> .hireme-icon) { display: flex; align-items: center; justify-content: center; gap: 4px; }

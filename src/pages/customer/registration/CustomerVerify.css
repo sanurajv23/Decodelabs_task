@@ -1,0 +1,555 @@
+/* ============================================================
+   HIREME — CUSTOMER VERIFICATION (STEP 1)
+   Scoped CSS • Mobile-First Soft Neumorphic
+   ============================================================ */
+
+:where(.customer-verify) {
+  --reg-bg: #F4F8FD;
+  --reg-primary: #1A5CFF;
+  --reg-primary-gradient: linear-gradient(135deg, #1A5CFF 0%, #0047E0 100%);
+  --reg-navy: #0B1938;
+  --reg-navy-body: #1E293B;
+  --reg-text-muted: #64748B;
+  --reg-text-subtle: #94A3B8;
+  --reg-border-light: rgba(255, 255, 255, 0.85);
+  --reg-border-subtle: #E2E8F0;
+  --reg-input-bg: #EBF2FA;
+  --reg-green: #10B981;
+  --reg-font: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+  font-family: var(--reg-font);
+  background-color: #E2EAF5;
+  color: var(--reg-navy-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+:where(.customer-verify) *,
+:where(.customer-verify) *::before,
+:where(.customer-verify) *::after {
+  box-sizing: border-box;
+}
+
+/* Shell */
+:where(.customer-verify) .reg-shell {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background-color: var(--reg-bg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  padding: calc(14px + var(--safe-area-top)) 20px calc(24px + var(--safe-area-bottom));
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* Atmospheric Ambient Glowing Orbs */
+:where(.customer-verify) .reg-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+:where(.customer-verify) .reg-orb-tr {
+  width: 260px;
+  height: 260px;
+  top: -80px;
+  right: -90px;
+  background: radial-gradient(circle, rgba(26, 92, 255, 0.12) 0%, rgba(244, 248, 253, 0) 70%);
+}
+
+:where(.customer-verify) .reg-orb-mr {
+  width: 180px;
+  height: 180px;
+  top: 360px;
+  right: -70px;
+  background: radial-gradient(circle, rgba(26, 92, 255, 0.08) 0%, rgba(244, 248, 253, 0) 70%);
+}
+
+:where(.customer-verify) .reg-orb-bl {
+  width: 320px;
+  height: 320px;
+  bottom: -90px;
+  left: -110px;
+  background: radial-gradient(circle, rgba(26, 92, 255, 0.14) 0%, rgba(244, 248, 253, 0) 75%);
+}
+
+/* Header */
+:where(.customer-verify) .reg-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-bottom: 20px;
+  z-index: 5;
+}
+
+:where(.customer-verify) .reg-back-btn {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #EFF4FB;
+  border: 1px solid var(--reg-border-light);
+  box-shadow: 2.5px 2.5px 5px rgba(15, 23, 42, 0.08),
+    -2.5px -2.5px 5px rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--reg-navy);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  z-index: 2;
+  padding: 0;
+}
+
+:where(.customer-verify) .reg-back-btn:hover {
+  transform: translateY(-50%) scale(1.04);
+}
+
+:where(.customer-verify) .reg-back-btn:active {
+  transform: translateY(-50%) scale(0.96);
+  box-shadow: inset 1.5px 1.5px 3px rgba(15, 23, 42, 0.1),
+    inset -1.5px -1.5px 3px rgba(255, 255, 255, 0.8);
+}
+
+:where(.customer-verify) .reg-brand {
+  text-align: center;
+  z-index: 1;
+}
+
+:where(.customer-verify) .reg-brand-logo {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--reg-navy);
+  letter-spacing: -0.6px;
+  line-height: 1.1;
+}
+
+:where(.customer-verify) .logo-accent {
+  color: var(--reg-primary);
+}
+
+:where(.customer-verify) .reg-brand-tagline {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--reg-text-muted);
+  letter-spacing: 0.2px;
+  margin-top: 2px;
+}
+
+/* 3-Step Progress Indicator */
+:where(.customer-verify) .reg-progress {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 0 4px;
+  position: relative;
+  z-index: 5;
+}
+
+:where(.customer-verify) .reg-step-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  text-align: center;
+}
+
+:where(.customer-verify) .reg-step-top {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+}
+
+:where(.customer-verify) .reg-step-line {
+  flex: 1;
+  height: 2px;
+  background-color: #CBD5E1;
+}
+
+:where(.customer-verify) .reg-step-line.completed {
+  background-color: var(--reg-primary);
+}
+
+:where(.customer-verify) .reg-step-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #E2E8F0;
+  color: var(--reg-text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 1px 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+:where(.customer-verify) .reg-step-circle.active {
+  background: var(--reg-primary);
+  color: #FFFFFF;
+  box-shadow: 0 4px 10px rgba(26, 92, 255, 0.4);
+}
+
+:where(.customer-verify) .reg-step-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--reg-text-muted);
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+:where(.customer-verify) .reg-step-label.active {
+  color: var(--reg-primary);
+  font-weight: 700;
+}
+
+/* Headings */
+:where(.customer-verify) .reg-title-wrap {
+  text-align: center;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 5;
+}
+
+:where(.customer-verify) .reg-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--reg-navy);
+  letter-spacing: -0.4px;
+  margin-bottom: 6px;
+}
+
+:where(.customer-verify) .reg-subtitle {
+  font-size: 13.5px;
+  color: var(--reg-text-muted);
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* Method Grid (Radio Cards) */
+:where(.customer-verify) .reg-method-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 22px;
+  position: relative;
+  z-index: 5;
+}
+
+:where(.customer-verify) .reg-method-card {
+  border-radius: 20px;
+  padding: 16px 12px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #EFF4FB;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 2px 3px 8px rgba(15, 23, 42, 0.04),
+    -2px -2px 6px rgba(255, 255, 255, 0.9);
+  user-select: none;
+}
+
+:where(.customer-verify) .reg-method-card.selected {
+  background: #F8FAFD;
+  border: 2px solid var(--reg-primary);
+  box-shadow: 3px 5px 16px rgba(26, 92, 255, 0.12),
+    -2px -2px 8px rgba(255, 255, 255, 0.95);
+}
+
+:where(.customer-verify) .reg-radio-indicator {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #A0AEC0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+:where(.customer-verify) .reg-method-card.selected .reg-radio-indicator {
+  border-color: var(--reg-primary);
+  background-color: var(--reg-primary);
+}
+
+:where(.customer-verify) .reg-method-card.selected .reg-radio-indicator::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+}
+
+:where(.customer-verify) .reg-method-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #EAF0F8;
+  box-shadow: 2px 2px 5px rgba(15, 23, 42, 0.05),
+    -2px -2px 5px rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1E293B;
+  margin-bottom: 12px;
+  margin-top: 4px;
+}
+
+:where(.customer-verify) .reg-method-icon-wrap svg {
+  width: 22px;
+  height: 22px;
+}
+
+:where(.customer-verify) .reg-method-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--reg-navy);
+  margin-bottom: 6px;
+}
+
+:where(.customer-verify) .reg-method-desc {
+  font-size: 11px;
+  color: var(--reg-text-muted);
+  line-height: 1.35;
+}
+
+/* Pill Input Fields */
+:where(.customer-verify) .reg-form-group {
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 5;
+}
+
+:where(.customer-verify) .reg-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--reg-text-muted);
+  margin-bottom: 6px;
+  padding-left: 4px;
+}
+
+:where(.customer-verify) .reg-input-pill {
+  width: 100%;
+  height: 52px;
+  border-radius: 9999px;
+  background: var(--reg-input-bg);
+  box-shadow: inset 1.5px 1.5px 3px rgba(15, 23, 42, 0.05),
+    inset -1.5px -1.5px 3px rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  gap: 12px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+:where(.customer-verify) .reg-input-pill:focus-within {
+  border-color: var(--reg-primary);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(26, 92, 255, 0.12),
+    inset 1px 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+:where(.customer-verify) .reg-input-icon {
+  color: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+:where(.customer-verify) .reg-input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+:where(.customer-verify) .reg-input-field {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--reg-navy-body);
+  outline: none;
+  width: 100%;
+}
+
+:where(.customer-verify) .reg-input-field::placeholder {
+  color: var(--reg-text-subtle);
+  font-weight: 400;
+}
+
+/* Phone Prefix & Flag */
+:where(.customer-verify) .reg-phone-prefix {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+:where(.customer-verify) .reg-flag-svg {
+  width: 22px;
+  height: 15px;
+  border-radius: 2px;
+  display: block;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+:where(.customer-verify) .reg-phone-code {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--reg-navy);
+}
+
+:where(.customer-verify) .reg-dropdown-arrow {
+  color: #64748B;
+  display: flex;
+  align-items: center;
+}
+
+:where(.customer-verify) .reg-dropdown-arrow svg {
+  width: 14px;
+  height: 14px;
+}
+
+:where(.customer-verify) .reg-phone-divider {
+  width: 1px;
+  height: 20px;
+  background-color: #CBD5E1;
+  margin: 0 2px;
+}
+
+/* OR Separator */
+:where(.customer-verify) .reg-or-divider {
+  display: flex;
+  align-items: center;
+  margin: 18px 0;
+  position: relative;
+  z-index: 5;
+}
+
+:where(.customer-verify) .reg-or-line {
+  flex: 1;
+  height: 1px;
+  background-color: #CBD5E1;
+}
+
+:where(.customer-verify) .reg-or-text {
+  padding: 0 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+/* Validation Message */
+:where(.customer-verify) .reg-validation-message {
+  min-height: 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #d3455d;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* Primary Pill Button */
+:where(.customer-verify) .reg-btn-primary {
+  width: 100%;
+  height: 56px;
+  border-radius: 9999px;
+  background: var(--reg-primary-gradient);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(26, 92, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  margin-top: 24px;
+  z-index: 5;
+}
+
+:where(.customer-verify) .reg-btn-primary:hover {
+  box-shadow: 0 10px 28px rgba(26, 92, 255, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+:where(.customer-verify) .reg-btn-primary:active {
+  transform: scale(0.985);
+  box-shadow: 0 4px 14px rgba(26, 92, 255, 0.3);
+}
+
+:where(.customer-verify) .reg-btn-arrow {
+  position: absolute;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--reg-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+:where(.customer-verify) .reg-btn-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Desktop Centering */
+@media (min-width: 600px) {
+  :where(.customer-verify) {
+    padding-block: 24px;
+  }
+  :where(.customer-verify) .reg-shell {
+    min-height: max(796px, calc(100svh - 48px));
+    border-radius: 28px;
+  }
+}
+

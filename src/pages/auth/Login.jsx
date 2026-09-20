@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../components/HireMeIcon";
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { startSession } from "../../utils/auth";
@@ -197,9 +198,7 @@ export default function Login() {
             <div className="login-input-group">
               <div className={`login-input-pill ${errors.identifier ? "has-error" : ""}`}>
                 <div className="login-input-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                  </svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="email" /></svg>
                 </div>
                 <input
                   ref={identifierRef}
@@ -220,9 +219,7 @@ export default function Login() {
             <div className="login-input-group">
               <div className={`login-input-pill ${errors.password ? "has-error" : ""}`}>
                 <div className="login-input-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-                  </svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="password" /></svg>
                 </div>
                 <input
                   ref={passwordRef}
@@ -252,10 +249,7 @@ export default function Login() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden="true"
-                    >
-                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                      <line x1="1" y1="1" x2="23" y2="23" />
-                    </svg>
+                    ><HireMeIconArtwork name="hide-password" /></svg>
                   ) : (
                     <svg
                       viewBox="0 0 24 24"
@@ -265,10 +259,7 @@ export default function Login() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden="true"
-                    >
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
+                    ><HireMeIconArtwork name="show-password" /></svg>
                   )}
                 </button>
               </div>
@@ -293,9 +284,7 @@ export default function Login() {
                     strokeWidth="3"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
+                  ><HireMeIconArtwork name="check" /></svg>
                 </span>
                 <span className="login-remember-text">Remember me</span>
               </label>
@@ -327,10 +316,7 @@ export default function Login() {
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
+                ><HireMeIconArtwork name="forward" /></svg>
               </div>
             </button>
           </form>

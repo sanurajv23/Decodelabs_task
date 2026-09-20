@@ -1,0 +1,68 @@
+/* Worker Home drawer values, scoped to the Customer role only. */
+#root .customer-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, .45);
+  backdrop-filter: blur(2px);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+#root .customer-drawer-backdrop.active { opacity: 1; pointer-events: auto; }
+#root .customer-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 100;
+  transform: translateX(-100%);
+  transition: transform .28s cubic-bezier(.16, 1, .3, 1);
+  display: flex;
+  flex-direction: column;
+  padding: calc(24px + env(safe-area-inset-top, 0px)) calc(20px + env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) calc(20px + env(safe-area-inset-left, 0px));
+  box-shadow: 4px 0 24px rgba(15, 23, 42, .12);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+#root .customer-drawer.active { transform: translateX(0); }
+#root .customer-drawer > * { flex-shrink: 0; }
+#root .customer-drawer .drawer-top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+#root .customer-drawer .brand-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #07063f;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -.4px;
+  line-height: 1.1;
+}
+#root .customer-drawer .logo-accent { color: #073cff; }
+#root .customer-drawer .drawer-close-btn { background: transparent; border: none; font-size: 26px; line-height: 1; color: #7085b7; cursor: pointer; padding: 4px; }
+#root .customer-drawer .drawer-user-card { display: flex; align-items: center; gap: 12px; padding: 12px; background: #eef3ff; border-radius: 14px; margin-bottom: 24px; }
+#root .customer-drawer .drawer-user-avatar { position: relative; width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 4px #0000000d; }
+#root .customer-drawer .drawer-user-name { font-size: 14.5px; font-weight: 700; color: #07063f; }
+#root .customer-drawer .drawer-user-card > div:last-child { min-width: 0; overflow-wrap: anywhere; }
+#root .customer-drawer .drawer-user-title { font-size: 12px; color: #7085b7; }
+#root .customer-drawer .online-status-dot { position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border: 2px solid #fff; border-radius: 50%; background: #10b981; }
+#root .customer-drawer .drawer-menu-list { list-style: none; display: flex; flex-direction: column; gap: 6px; padding: 0; margin: 0; }
+#root .customer-drawer .drawer-menu-link { display: flex; align-items: center; gap: 12px; padding: 10px 12px; color: #334155; text-decoration: none; font-size: 14px; font-weight: 600; border-radius: 10px; transition: all .15s ease; }
+#root .customer-drawer .drawer-menu-link:hover,
+#root .customer-drawer .drawer-menu-link.active { background: #eef3ff; color: #073cff; }
+#root .customer-drawer .drawer-separator { height: 1px; background: #f1f5f9; margin: 12px 0; }
+#root .customer-drawer .logout-link { color: #ef4444; }
+#root .customer-drawer :is(a, button):focus-visible { outline: 2px solid #073cff; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  #root .customer-drawer, #root .customer-drawer-backdrop,
+  #root .customer-drawer .drawer-menu-link { transition: none; }
+}

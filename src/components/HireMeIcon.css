@@ -15,8 +15,38 @@
 #root .hireme-icon { fill: currentColor; stroke: none; }
 #root .hireme-icon-outline { fill: none; stroke: currentColor; stroke-width: 2; }
 #root .hireme-icon[data-icon="search"] { stroke-width: 2.5; }
+#root .hireme-icon:is([data-icon="electrical"], [data-icon="plumbing"]) { stroke-width: 2.2; }
+#root .hireme-icon[data-icon="cleaning"] { stroke-width: 2.4; }
+#root .hireme-icon[data-icon="chevron"] { stroke-width: 2.5; }
 #root .hireme-icon[data-icon="notifications"] { color: #394b88; }
 #root .hireme-glyph { font: 23px/24px 'Plus Jakarta Sans', system-ui, sans-serif; text-align: center; }
+/* Opt-in, role-independent sizes. Existing callers retain the 24px standard. */
+#root :is(.hireme-icon, .hireme-glyph)[data-size="small"] { --hireme-icon-size: 18px; }
+#root :is(.hireme-icon, .hireme-glyph)[data-size="medium"] { --hireme-icon-size: 20px; }
+#root :is(.hireme-icon, .hireme-glyph)[data-size="large"] { --hireme-icon-size: 28px; }
+#root :is(.hireme-icon, .hireme-glyph)[data-size="action"] { --hireme-icon-size: 22px; }
+#root :is(.hireme-icon, .hireme-glyph)[data-size="service"] { --hireme-icon-size: 48px; }
+#root :is(.hireme-icon, .hireme-glyph):is([data-size="small"], [data-size="medium"], [data-size="large"], [data-size="action"], [data-size="service"]) {
+  width: var(--hireme-icon-size);
+  height: var(--hireme-icon-size);
+  min-width: var(--hireme-icon-size);
+  flex: 0 0 var(--hireme-icon-size);
+  align-self: center;
+}
+#root .hireme-glyph:is([data-size="small"], [data-size="medium"], [data-size="large"], [data-size="action"], [data-size="service"]) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--hireme-icon-size) - 1px);
+  line-height: 1;
+}
+#root .hireme-icon[data-icon="electrical"] { color: #ffad14; }
+#root .hireme-icon[data-icon="plumbing"] { color: #ff2b5d; }
+#root .hireme-icon[data-icon="cleaning"] { color: #00b976; }
+#root .hireme-glyph[data-icon="painting"] { color: #832cf2; }
+/* Semantic controls opt into their label color without changing other callers. */
+#root :is(.hireme-icon, .hireme-glyph)[data-color="inherit"] { color: inherit; }
+#root .hireme-glyph[data-size="service"] { font-weight: 700; }
 #root :is(.nav-tab-link.active, .drawer-menu-link.active) > .hireme-icon,
 #root .nav-tab-link.active .hireme-icon,
 #root .nav-tab-link.active .hireme-glyph { color: #073cff; }
@@ -31,4 +61,4 @@
   flex: 0 0 24px;
 }
 #root .hireme-menu-icon > span { display: block; width: 19px; height: 2px; margin: 0; padding: 0; border-radius: 4px; background: #465dc5; }
-#root .outline-action:has(> .hireme-icon) { display: flex; align-items: center; justify-content: center; gap: 4px; }
+#root .outline-action:has(> .hireme-icon) { display: flex; align-items: center; justify-content: center; gap: var(--action-icon-gap, 4px); }

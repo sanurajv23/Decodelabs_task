@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import HireMeIcon from "./HireMeIcon";
+import "./CustomerBottomNavigation.css";
 
 const WORKER_TABS = [
   { path: "/worker/home", icon: "home", label: "Home" },
@@ -31,7 +32,7 @@ export default function BottomNavigation({
     : "Customer navigation";
 
   return (
-    <nav className="bottom-nav-bar" aria-label={ariaLabel}>
+    <nav className={`bottom-nav-bar${isWorker ? "" : " customer-bottom-navigation"}`} aria-label={ariaLabel}>
       <ul className="bottom-nav-list">
         {tabs.map((tab) => {
           const isActive =
@@ -40,30 +41,8 @@ export default function BottomNavigation({
               tab.path !== "/customer/home" &&
               location.pathname.startsWith(tab.path));
 
-          if (isWorker) {
-            return (
-              <li key={tab.path} className="nav-tab-item">
-                <Link
-                  to={tab.path}
-                  className={`nav-tab-link${isActive ? " active" : ""}`}
-                  aria-current={isActive ? "page" : undefined}
-                  onClick={(e) => {
-                    if (isActive && onActiveTabClick) {
-                      onActiveTabClick(e, tab.path);
-                    }
-                  }}
-                >
-                  <div className="nav-icon-box">
-                    <HireMeIcon name={tab.icon} />
-                  </div>
-                  <span className="nav-tab-label">{tab.label}</span>
-                </Link>
-              </li>
-            );
-          }
-
           return (
-            <li key={tab.path}>
+            <li key={tab.path} className="nav-tab-item">
               <Link
                 to={tab.path}
                 className={`nav-tab-link${isActive ? " active" : ""}`}
@@ -74,9 +53,9 @@ export default function BottomNavigation({
                   }
                 }}
               >
-                <span className="nav-icon-box">
+                <div className="nav-icon-box">
                   <HireMeIcon name={tab.icon} />
-                </span>
+                </div>
                 <span className="nav-tab-label">{tab.label}</span>
               </Link>
             </li>
@@ -94,4 +73,3 @@ export function WorkerBottomNavigation(props) {
 export function CustomerBottomNavigation(props) {
   return <BottomNavigation role="customer" {...props} />;
 }
-

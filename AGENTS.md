@@ -1,5 +1,9 @@
 # Global HireMe design rule: one meaning, one standard icon
 
+- Worker UI is the source of truth for icon artwork. Before changing a Customer icon, inspect its corresponding Worker page and reuse the exact artwork through `HireMeIcon`.
+- Explicit conflict resolution (2026-09-20): preserve Worker appearance and copy each corresponding page's current mapping. Do not silently correct unusual Worker service assignments or unify conflicting Worker variants by redesigning them. Worker Jobs currently uses the same drop artwork for Electrical and Plumbing and a lightning polygon for Cleaning; Customer service icons follow these mappings.
+- `HireMeIconArtwork` is the shared artwork export for legacy SVG shells. Use it to deduplicate exact paths while preserving existing Worker shell dimensions, stroke, fill, colors and classes. New Customer controls use `HireMeIcon` with shared size and semantic color options.
+
 - HireMe is one application. Every function, action, or concept must have one standard icon throughout the application; do not treat pages as independent icon systems.
 - This applies to Customer, Worker, registration, and login pages; headers, navigation, cards, buttons, forms, modals, toasts, empty states; and all future pages and components.
 - For the same meaning, Customer and Worker must use the same icon source, shape, stroke/fill style, visual weight, size conventions, and appearance. Do not create separate role-specific versions of a shared concept.

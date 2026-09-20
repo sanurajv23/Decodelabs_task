@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../../components/HireMeIcon";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HireMeIcon from "../../../components/HireMeIcon";
@@ -231,9 +232,7 @@ export default function CustomerVerify() {
                     strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+                  ><HireMeIconArtwork name="expand" /></svg>
                 </span>
                 <span className="reg-phone-divider" />
               </div>
@@ -296,10 +295,7 @@ export default function CustomerVerify() {
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-              >
-                <line x1="5" y1="12" x2="19" y2="12" />
-                <polyline points="12 5 19 12 12 19" />
-              </svg>
+              ><HireMeIconArtwork name="forward" /></svg>
             </span>
           </button>
         </form>

@@ -213,44 +213,6 @@ body:has(.worker-jobs) {
   margin-left: auto;
 }
 
-:where(.worker-jobs) .notification-btn {
-  background: var(--jobs-glass);
-  border: none;
-  cursor: pointer;
-  position: relative;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-dark);
-  border-radius: 50%;
-  box-shadow: var(--jobs-shadow);
-  transition: background-color 0.15s ease;
-}
-
-:where(.worker-jobs) .notification-btn:hover {
-  background-color: rgba(15, 23, 42, 0.05);
-}
-
-:where(.worker-jobs) .notification-btn::after {
-  content: '';
-  position: absolute;
-  width: 11px;
-  height: 11px;
-  right: 2px;
-  top: 0;
-  background: #ff424c;
-  border-radius: 50%;
-  border: 2px solid white;
-}
-
-:where(.worker-jobs) .notification-icon {
-  width: 21px;
-  height: 21px;
-  color: #394b88;
-}
-
 :where(.worker-jobs) .user-avatar-link {
   display: block;
   text-decoration: none;

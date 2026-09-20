@@ -9,7 +9,7 @@ export default function Logo({
 }) {
   const content = (
     <>
-      <span>
+      <span style={{ whiteSpace: "nowrap" }}>
         Hire<span className="logo-accent">Me</span>
       </span>
       {showTagline && <span className="brand-tagline">Work. Earn. Grow.</span>}
@@ -26,4 +26,3 @@ export default function Logo({
 
   return <div className={className}>{content}</div>;
 }
-

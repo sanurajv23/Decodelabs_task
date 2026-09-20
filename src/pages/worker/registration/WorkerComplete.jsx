@@ -1,7 +1,9 @@
+import { HireMeIconArtwork } from "../../../components/HireMeIcon";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HireMeIcon from "../../../components/HireMeIcon";
 import RegistrationProgress from "./RegistrationProgress";
+import { saveProfile } from "../../../utils/auth";
 import "./WorkerRegistration.css";
 
 export default function WorkerComplete() {
@@ -25,6 +27,36 @@ export default function WorkerComplete() {
 
   const handleGoHome = (e) => {
     e.preventDefault();
+    try {
+      // Merge all registration step data into a single workerProfile
+      const readJson = (key) => {
+        try { return JSON.parse(window.sessionStorage.getItem(key) || "{}") || {}; } catch { return {}; }
+      };
+      const details = readJson("workerDetails");
+      const workData = readJson("workerWorkData");
+      const verification = readJson("workerVerification");
+      saveProfile("worker", {
+        fullName: details.fullName || "",
+        nicPassport: details.nicPassport || "",
+        verifiedContact: verification.phone || verification.email || "",
+        verificationMethod: verification.method || "mobile",
+        category: workData.category || "",
+        skills: workData.skills || "",
+        expLevel: workData.expLevel || "",
+        rate: workData.rate || "",
+        area: workData.area || "",
+        availability: workData.availability || "",
+        bio: workData.bio || "",
+        registrationCompleted: true,
+        registeredAt: new Date().toISOString(),
+      });
+      // Clean up intermediate keys
+      ["workerDetails", "workerWorkData", "workerVerification"].forEach((k) => {
+        try { window.sessionStorage.removeItem(k); } catch { /* ignore */ }
+      });
+    } catch {
+      // Storage unavailable — proceed anyway
+    }
     try {
       window.sessionStorage.setItem(
         "hireme_session",
@@ -92,9 +124,7 @@ export default function WorkerComplete() {
 
             {/* Neumorphic Check Badge */}
             <div className="reg-check-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="check" /></svg>
             </div>
           </div>
 
@@ -114,9 +144,7 @@ export default function WorkerComplete() {
           <div className="reg-summary-item">
             <div className="reg-summary-left">
               <div className="reg-summary-icon-box">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                </svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="profile" /></svg>
               </div>
               <div>
                 <div className="reg-summary-title">Account Verified</div>
@@ -124,9 +152,7 @@ export default function WorkerComplete() {
               </div>
             </div>
             <div className="reg-summary-check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="check" /></svg>
             </div>
           </div>
 
@@ -144,9 +170,7 @@ export default function WorkerComplete() {
               </div>
             </div>
             <div className="reg-summary-check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="check" /></svg>
             </div>
           </div>
 
@@ -154,9 +178,7 @@ export default function WorkerComplete() {
           <div className="reg-summary-item">
             <div className="reg-summary-left">
               <div className="reg-summary-icon-box">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
-                </svg>
+                <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="briefcase" /></svg>
               </div>
               <div>
                 <div className="reg-summary-title">Work Details Added</div>
@@ -164,9 +186,7 @@ export default function WorkerComplete() {
               </div>
             </div>
             <div className="reg-summary-check">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="check" /></svg>
             </div>
           </div>
         </div>
@@ -203,10 +223,7 @@ export default function WorkerComplete() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            ><HireMeIconArtwork name="forward" /></svg>
           </div>
         </button>
 

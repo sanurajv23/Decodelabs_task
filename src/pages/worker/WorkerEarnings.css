@@ -6,30 +6,30 @@ html:has(.worker-earnings) { color-scheme: light; letter-spacing: normal; }
 .worker-earnings { width: 100%; }
 .worker-earnings :is(h1, h2, h3, h4) { font-family: inherit; color: inherit; line-height: inherit; letter-spacing: normal; }
 
-/* Design system variables from original style.css and components.css */
+/* Design system variables */
 html:has(.worker-earnings) {
-  --primary: #073cff;
-  --primary-hover: #1E46E0;
-  --primary-light: #EEF3FF;
-  --accent-orange: #EA580C;
-  --accent-orange-hover: #C2410C;
-  --accent-red: #EF4444;
-  --accent-green: #10B981;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
+  --accent-orange: #ea580c;
+  --accent-orange-hover: #c2410c;
+  --accent-red: #ef4444;
+  --accent-green: #10b981;
   --accent-green-dark: #059669;
-  --bg-app: #F8FAFC;
-  --bg-header: #EAEFFB;
-  --bg-white: #FFFFFF;
-  --text-dark: #07063f;
-  --text-navy: #07063f;
+  --bg-app: #f0f6ff;
+  --bg-header: #ffffff;
+  --bg-white: #ffffff;
+  --text-dark: #0f172a;
+  --text-navy: #1e293b;
   --text-body: #334155;
-  --text-muted: #7085b7;
-  --text-subtle: #94A3B8;
-  --border-light: #F1F5F9;
-  --border-header: #E2E8F0;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --border-light: #f1f5f9;
+  --border-header: #e2e8f0;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --max-app-width: 430px;
   --header-height: 64px;
-  --bottom-nav-height: 74px;
+  --bottom-nav-height: 72px;
   --safe-area-top: env(safe-area-inset-top, 0px);
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
   --safe-area-left: env(safe-area-inset-left, 0px);
@@ -38,14 +38,10 @@ html:has(.worker-earnings) {
   --radius-sm: 10px;
   --radius-md: 14px;
   --radius-lg: 18px;
-  --radius-xl: 24px;
+  --radius-xl: 22px;
   --radius-pill: 9999px;
-  --shadow-header: 0 4px 16px rgba(43, 89, 255, 0.04);
-  --shadow-card: 0 2px 10px rgba(15, 23, 42, 0.03);
+  --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.05);
   --shadow-elevated: 0 10px 30px rgba(15, 23, 42, 0.08);
-  --shadow-nav: 0 -3px 16px rgba(15, 23, 42, 0.04);
-  --earnings-glass: linear-gradient(135deg, rgba(255,255,255,.86), rgba(242,249,255,.52));
-  --earnings-shadow: 6px 10px 24px rgba(91, 143, 207, .15), inset 1px 1px 2px rgba(255,255,255,.96);
 }
 
 .worker-earnings, .worker-earnings *, .worker-earnings::before, .worker-earnings *::before, .worker-earnings::after, .worker-earnings *::after {
@@ -63,7 +59,7 @@ html:has(.worker-earnings) {
 
 body:has(.worker-earnings) {
   font-family: var(--font-sans);
-  background: #eaf4ff;
+  background: #f0f6ff;
   color: var(--text-dark);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -85,14 +81,12 @@ body:has(.worker-earnings) {
   max-width: 100%;
   min-height: 100vh;
   min-height: 100svh;
-  background: radial-gradient(circle at 15% 20%, #fff 0, transparent 27%),
-    radial-gradient(circle at 92% 46%, #d7eaff 0, transparent 32%),
-    linear-gradient(130deg, #edf6ff, #e8f3ff);
+  background: linear-gradient(180deg, #edf5ff 0%, #f4f8fe 35%, #f8fafd 100%);
   display: flex;
   flex-direction: column;
   position: relative;
   box-shadow: none;
-  margin: 0;
+  margin: 0 auto;
   overflow-x: hidden;
 }
 
@@ -104,11 +98,10 @@ body:has(.worker-earnings) {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  padding: calc(8px + var(--safe-area-top)) calc(17px + var(--safe-area-right)) 8px calc(17px + var(--safe-area-left));
-  border-radius: 0;
-  background: rgba(236,246,255,.84);
-  box-shadow: 0 5px 18px rgba(89,145,211,.13);
-  backdrop-filter: blur(18px);
+  padding: calc(10px + var(--safe-area-top)) calc(18px + var(--safe-area-right)) 10px calc(18px + var(--safe-area-left));
+  background: rgba(240, 246, 255, 0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
 }
 
 :where(.worker-earnings) .header-container {
@@ -116,38 +109,32 @@ body:has(.worker-earnings) {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 40px;
+  height: 48px;
   position: relative;
 }
 
 :where(.worker-earnings) .menu-btn {
-  width: 32px;
-  height: 32px;
-  padding: 2px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
   gap: 4px;
-  background: var(--earnings-glass);
-  box-shadow: var(--earnings-shadow);
-  border: none;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: all 0.15s ease;
   z-index: 2;
   flex-shrink: 0;
 }
 
 :where(.worker-earnings) .menu-btn:hover {
-  background-color: rgba(15, 23, 42, 0.05);
-}
-
-:where(.worker-earnings) .menu-bar {
-  width: 21px;
-  height: 2px;
-  background: #253869;
-  border-radius: 4px;
+  background-color: #f8fafc;
+  transform: translateY(-1px);
 }
 
 :where(.worker-earnings) .brand-logo {
@@ -155,10 +142,10 @@ body:has(.worker-earnings) {
   left: 50%;
   transform: translateX(-50%);
   font-size: 24px;
-  line-height: 1.05;
-  letter-spacing: -1px;
+  line-height: 1.1;
+  letter-spacing: -0.6px;
   font-weight: 800;
-  color: var(--text-dark);
+  color: #0f172a;
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -175,10 +162,10 @@ body:has(.worker-earnings) {
 
 :where(.worker-earnings) .brand-tagline {
   margin-top: 2px;
-  font-size: 8px;
-  font-weight: 700;
-  color: #7b92c1;
-  letter-spacing: -.1px;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.1px;
 }
 
 :where(.worker-earnings) .header-actions {
@@ -190,76 +177,39 @@ body:has(.worker-earnings) {
   margin-left: auto;
 }
 
-:where(.worker-earnings) .notification-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--earnings-glass);
-  box-shadow: var(--earnings-shadow);
-  border: none;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-dark);
-  transition: background-color 0.15s ease;
-}
-
-:where(.worker-earnings) .notification-btn:hover {
-  background-color: rgba(15, 23, 42, 0.05);
-}
-
-:where(.worker-earnings) .notification-btn::after {
-  content: '';
-  position: absolute;
-  right: 1px;
-  top: -1px;
-  width: 11px;
-  height: 11px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: #ff3545;
-}
-
-:where(.worker-earnings) .notification-icon {
-  width: 21px;
-  height: 21px;
-  color: #293d78;
-}
-
 :where(.worker-earnings) .user-avatar-link {
   display: block;
   text-decoration: none;
 }
 
 :where(.worker-earnings) .user-avatar-wrapper {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  background: var(--earnings-glass);
-  box-shadow: var(--earnings-shadow);
+  background: #dbeafe;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #2563eb;
 }
 
-:where(.worker-earnings) .avatar-silhouette {
-  width: 23px;
-  height: 23px;
-  color: #8ca5d0;
+:where(.worker-earnings) .user-avatar-wrapper svg {
+  width: 22px;
+  height: 22px;
 }
 
 :where(.worker-earnings) .online-status-dot {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  width: 11px;
-  height: 11px;
-  background: #00ba66;
+  width: 12px;
+  height: 12px;
+  background: #10b981;
   border-radius: 50%;
-  border: 2px solid var(--bg-white);
+  border: 2.5px solid #ffffff;
 }
 
 /* ── Main Content ── */
@@ -268,8 +218,8 @@ body:has(.worker-earnings) {
   max-width: 100%;
   box-sizing: border-box;
   flex: 1;
-  gap: 0;
-  padding: 20px calc(17px + var(--safe-area-right)) calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 18px) calc(17px + var(--safe-area-left));
+  gap: 20px;
+  padding: 20px calc(18px + var(--safe-area-right)) calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 36px) calc(18px + var(--safe-area-left));
   display: flex;
   flex-direction: column;
 }
@@ -278,182 +228,188 @@ body:has(.worker-earnings) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-:where(.worker-earnings) .main-content > .section-header {
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 12px !important;
 }
 
 /* ── Page Header: Title & Filter ── */
+:where(.worker-earnings) .page-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+}
+
 :where(.worker-earnings) .page-title-section {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
 }
 
 :where(.worker-earnings) .page-main-title {
-  font-size: 29px;
-  line-height: 1.18;
-  color: #06104d;
-  letter-spacing: -1.2px;
+  font-size: 30px;
+  line-height: 1.15;
+  color: #0f172a;
+  letter-spacing: -0.8px;
   font-weight: 800;
 }
 
 :where(.worker-earnings) .page-subtitle {
-  font-size: 13px;
-  line-height: 1.35;
-  font-weight: 600;
-  color: #6b84b8;
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #64748b;
 }
 
 :where(.worker-earnings) .period-filter-btn {
   display: inline-flex;
   align-items: center;
-  min-height: 50px;
-  margin-top: 2px;
-  padding: 0 13px;
+  height: 42px;
+  padding: 0 14px;
   gap: 8px;
-  border: 0;
-  border-radius: 13px;
-  color: #11194c;
-  background: var(--earnings-glass);
-  box-shadow: var(--earnings-shadow);
-  font-size: 11.5px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  color: #0f172a;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
   font-family: inherit;
-  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
 }
 
 :where(.worker-earnings) .period-filter-btn:hover {
-  background-color: rgba(248, 250, 252, 0.9);
+  background-color: #f8fafc;
+  transform: translateY(-1px);
 }
 
-:where(.worker-earnings) .period-icon {
-  width: 18px;
-  height: 18px;
-  color: #5874ad;
-  stroke-width: 2.5;
+:where(.worker-earnings) .period-filter-btn svg {
+  width: 16px;
+  height: 16px;
+  color: #2563eb;
 }
 
 :where(.worker-earnings) .period-chevron {
-  font-size: 11px;
-  color: #5471a9;
+  font-size: 10px;
+  color: #64748b;
+  margin-left: 2px;
 }
 
 /* ── Total Earnings Hero Banner ── */
 :where(.worker-earnings) .earnings-hero-banner {
   position: relative;
   isolation: isolate;
-  min-height: 156px;
-  padding: 18px 20px;
-  gap: 12px;
+  min-height: 176px;
+  padding: 22px 20px 22px;
   overflow: hidden;
-  border-radius: 15px;
-  background: linear-gradient(118deg, #1553f7, #0861f5 65%, #167cf6);
-  box-shadow: 0 12px 24px rgba(31,99,214,.27), inset 0 1px 1px rgba(255,255,255,.48);
-  color: #FFFFFF;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 60%, #1e40af 100%);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.28);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-:where(.worker-earnings) .earnings-hero-banner::before {
-  content: '';
+/* Ascending bar decoration on bottom right */
+:where(.worker-earnings) .hero-chart-decoration {
   position: absolute;
-  z-index: -1;
-  width: 240px;
-  height: 160px;
-  left: -80px;
-  bottom: -114px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.14);
+  right: 18px;
+  bottom: 0px;
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
   pointer-events: none;
+  z-index: 0;
+  opacity: 0.32;
 }
 
-:where(.worker-earnings) .earnings-hero-banner::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  right: 18px;
-  bottom: 18px;
-  width: 145px;
-  height: 80px;
-  opacity: .38;
-  background: linear-gradient(to top, #b7ddff 0 100%) 0 100% / 18px 39px no-repeat,
-    linear-gradient(to top, #b7ddff 0 100%) 38px 100% / 18px 58px no-repeat,
-    linear-gradient(to top, #b7ddff 0 100%) 76px 100% / 18px 72px no-repeat,
-    linear-gradient(to top, #b7ddff 0 100%) 114px 100% / 18px 100% no-repeat;
-  border-radius: 6px;
-  pointer-events: none;
+:where(.worker-earnings) .hero-bar {
+  width: 14px;
+  background: #ffffff;
+  border-radius: 4px 4px 0 0;
 }
+
+:where(.worker-earnings) .hero-bar-1 { height: 28px; }
+:where(.worker-earnings) .hero-bar-2 { height: 44px; }
+:where(.worker-earnings) .hero-bar-3 { height: 62px; }
+:where(.worker-earnings) .hero-bar-4 { height: 80px; }
 
 :where(.worker-earnings) .earnings-hero-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  z-index: 1;
 }
 
 :where(.worker-earnings) .earnings-hero-label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 :where(.worker-earnings) .pending-payment-pill {
   display: inline-flex;
   align-items: center;
   z-index: 1;
-  max-width: 100%;
-  padding: 8px 10px;
+  padding: 6px 12px;
   gap: 6px;
-  border-radius: 12px;
-  color: #007c68;
-  background: linear-gradient(120deg, #d9fff3, #26d3a7);
-  box-shadow: inset 1px 1px 2px rgba(255,255,255,.65);
-  font-size: 10.5px;
-  font-weight: 700;
+  border-radius: var(--radius-pill);
+  background: #4ade80;
+  color: #064e3b;
+  font-size: 11.5px;
+  font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: opacity 0.15s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 
 :where(.worker-earnings) .pending-payment-pill:hover {
-  opacity: 0.9;
+  background: #86efac;
+  transform: translateY(-1px);
 }
 
-:where(.worker-earnings) .pending-pill-icon {
-  width: 16px;
-  height: 16px;
-  stroke-width: 3;
+:where(.worker-earnings) .pending-payment-pill svg {
+  width: 14px;
+  height: 14px;
+  color: #064e3b;
+  stroke-width: 2.2;
+}
+
+:where(.worker-earnings) .pending-pill-label {
+  color: #064e3b;
+  font-size: 11.5px;
+  font-weight: 600;
 }
 
 :where(.worker-earnings) .pending-pill-amount {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 800;
-  color: #fff;
-  white-space: nowrap;
+  color: #064e3b;
 }
 
 :where(.worker-earnings) .pending-pill-chevron {
-  color: #007c68;
-  font-size: 18px;
+  color: #064e3b;
+  font-size: 14px;
   line-height: 1;
+  font-weight: 700;
 }
 
 :where(.worker-earnings) .earnings-hero-main-amount {
   z-index: 1;
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 800;
-  letter-spacing: -1.6px;
+  letter-spacing: -1.2px;
   line-height: 1.1;
-  color: #FFFFFF;
+  color: #ffffff;
+  margin: 12px 0 14px;
 }
 
 :where(.worker-earnings) .earnings-hero-footer {
@@ -461,192 +417,219 @@ body:has(.worker-earnings) {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12.5px;
+  font-size: 13px;
 }
 
 :where(.worker-earnings) .earnings-growth-badge {
   font-size: 14px;
-  font-weight: 800;
-  color: #79f6a4;
+  font-weight: 700;
+  color: #4ade80;
   display: inline-flex;
   align-items: center;
-  gap: 2px;
 }
 
 :where(.worker-earnings) .earnings-growth-text {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
 }
 
 /* ── Performance Statistics Cards ── */
 :where(.worker-earnings) .stats-container {
-  margin: 12px 0 18px;
+  margin: 0;
+  width: 100%;
 }
 
 :where(.worker-earnings) .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  gap: 10px;
+  width: 100%;
 }
 
-:where(.worker-earnings) .stat-card-textonly {
+:where(.worker-earnings) .stat-card {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  min-height: 116px;
+  min-height: 118px;
   align-items: center;
   justify-content: center;
-  padding: 12px 4px 10px;
-  border: 0;
-  border-radius: 14px;
+  padding: 14px 4px 12px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 18px;
   text-align: center;
-  background: var(--earnings-glass);
-  box-shadow: var(--earnings-shadow);
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
   cursor: default;
 }
 
 :where(.worker-earnings) .stat-icon-wrapper {
   display: grid;
   place-items: center;
-  width: 43px;
-  height: 43px;
-  margin-bottom: 9px;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 8px;
   border-radius: 50%;
-  box-shadow: 3px 5px 10px rgba(93,151,215,.16), inset 1px 1px 3px white;
-}
-
-:where(.worker-earnings) .stat-icon {
-  width: 25px;
-  height: 25px;
+  flex-shrink: 0;
 }
 
 :where(.worker-earnings) .stat-card-jobs .stat-icon-wrapper {
-  background: linear-gradient(135deg, #fff, #d8eaff);
-}
-:where(.worker-earnings) .stat-card-jobs .stat-icon {
-  color: #2867f3;
+  background: #dbeafe;
+  color: #2563eb;
 }
 
 :where(.worker-earnings) .stat-card-completed .stat-icon-wrapper {
-  background: linear-gradient(135deg, #fff, #c9fff0);
-}
-:where(.worker-earnings) .stat-card-completed .stat-icon {
-  color: #12c4a1;
+  background: #d1fae5;
+  color: #10b981;
 }
 
 :where(.worker-earnings) .stat-card-progress .stat-icon-wrapper {
-  background: linear-gradient(135deg, #fff, #ffead7);
-}
-:where(.worker-earnings) .stat-card-progress .stat-icon {
-  color: #ff862e;
+  background: #ffedd5;
+  color: #f97316;
 }
 
 :where(.worker-earnings) .stat-card-earnings .stat-icon-wrapper {
-  background: linear-gradient(135deg, #fff, #e5dcff);
-}
-:where(.worker-earnings) .stat-card-earnings .stat-icon {
-  color: #8652ef;
+  background: #ede9fe;
+  color: #8b5cf6;
 }
 
-:where(.worker-earnings) .stat-card-textonly .stat-number {
-  margin-bottom: 4px;
-  font-size: 18px;
+:where(.worker-earnings) .stat-icon-wrapper svg {
+  width: 20px;
+  height: 20px;
+}
+
+:where(.worker-earnings) .stat-card .stat-number {
+  margin-bottom: 3px;
+  font-size: 22px;
   font-weight: 800;
-  color: #07104c;
-  letter-spacing: -.8px;
-  line-height: 1.1;
+  color: #0f172a;
+  letter-spacing: -0.6px;
+  line-height: 1.15;
 }
 
-:where(.worker-earnings) .stat-card-textonly .stat-number-currency {
-  font-size: clamp(9px, 2.55vw, 10.5px);
-  letter-spacing: -.65px;
+:where(.worker-earnings) .stat-card .stat-number-currency {
+  font-size: 13.5px;
+  letter-spacing: -0.5px;
   white-space: nowrap;
 }
 
-:where(.worker-earnings) .stat-card-textonly .stat-title {
-  font-size: 9.5px;
-  line-height: 1.22;
-  font-weight: 600;
-  color: #6681b5;
-  white-space: normal;
+:where(.worker-earnings) .stat-card .stat-title {
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: #64748b;
 }
 
 /* ── Section Title with Icon ── */
 :where(.worker-earnings) .earnings-chart-section,
-:where(.worker-earnings) .recent-transactions-section {
-  margin-bottom: 18px;
+:where(.worker-earnings) .recent-transactions-section,
+:where(.worker-earnings) .withdraw-earnings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 :where(.worker-earnings) .section-title-with-icon {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  font-size: 17px;
+  gap: 8px;
+  font-size: 19px;
   font-weight: 800;
-  letter-spacing: -.7px;
-  color: #07104c;
+  letter-spacing: -0.5px;
+  color: #0f172a;
 }
 
-:where(.worker-earnings) .section-title-svg {
+:where(.worker-earnings) .section-title-icon {
+  display: grid;
+  place-items: center;
+  color: #2563eb;
+}
+
+:where(.worker-earnings) .section-title-icon svg {
   width: 22px;
   height: 22px;
-  color: #1762f5;
-  stroke-width: 2.8;
 }
 
 :where(.worker-earnings) .see-all-link {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  font-weight: 800;
-  color: #0b44e9;
+  gap: 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #2563eb;
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.15s ease;
-}
-
-:where(.worker-earnings) .see-all-link::after {
-  content: '›';
-  font-size: 23px;
-  line-height: 10px;
 }
 
 :where(.worker-earnings) .see-all-link:hover {
   opacity: 0.85;
 }
 
+:where(.worker-earnings) .see-all-arrow {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 700;
+}
+
 /* ── Earnings Overview (Bar Chart) ── */
 :where(.worker-earnings) .chart-card-container {
-  position: relative;
-  padding: 25px 17px 12px 40px;
-  overflow: hidden;
-  border: 0;
-  border-radius: 15px;
-  background: var(--earnings-glass);
-  box-shadow: var(--earnings-shadow);
+  padding: 22px 18px 18px 12px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-:where(.worker-earnings) .chart-card-container::before {
-  content: '12K\A\A9K\A\A6K\A\A3K\A\A0';
-  white-space: pre;
-  position: absolute;
-  left: 10px;
-  top: 22px;
-  color: #6b83b3;
-  font-size: 9px;
-  line-height: 24px;
+:where(.worker-earnings) .chart-grid-layout {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: 230px;
+}
+
+:where(.worker-earnings) .chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 180px;
+  flex-shrink: 0;
+  padding-bottom: 2px;
+}
+
+:where(.worker-earnings) .chart-y-label {
+  font-size: 11px;
   font-weight: 600;
+  color: #94a3b8;
+  text-align: right;
+  line-height: 1;
 }
 
-:where(.worker-earnings) .chart-card-container::after {
-  content: '';
+:where(.worker-earnings) .chart-bars-wrapper {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+:where(.worker-earnings) .chart-grid-lines {
   position: absolute;
-  inset: 25px 17px 46px 40px;
-  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   pointer-events: none;
-  background: repeating-linear-gradient(to bottom, transparent 0 23px, rgba(93,150,222,.13) 24px 25px);
-  border-left: 1px solid rgba(74,133,219,.35);
-  border-bottom: 1px solid rgba(74,133,219,.35);
+}
+
+:where(.worker-earnings) .chart-grid-line {
+  width: 100%;
+  height: 1px;
+  background: rgba(226, 232, 240, 0.7);
 }
 
 :where(.worker-earnings) .bar-chart-flex {
@@ -655,16 +638,15 @@ body:has(.worker-earnings) {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  height: 150px;
-  padding-bottom: 0;
-  gap: 7px;
+  height: 100%;
+  width: 100%;
+  gap: 6px;
 }
 
 :where(.worker-earnings) .chart-bar-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
   height: 100%;
   flex: 1;
   cursor: pointer;
@@ -674,34 +656,46 @@ body:has(.worker-earnings) {
   font-family: inherit;
 }
 
+:where(.worker-earnings) .chart-bar-track {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 180px;
+  width: 100%;
+}
+
 :where(.worker-earnings) .chart-bar-fill {
   width: min(28px, 80%);
-  min-height: 10px;
-  border-radius: 6px 6px 4px 4px;
-  background: linear-gradient(110deg, #2a7bf7, #3274e9);
-  box-shadow: inset 1px 1px 1px rgba(255,255,255,.32), 0 5px 10px rgba(49,117,233,.16);
+  min-height: 8px;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
   transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
 }
 
 :where(.worker-earnings) .chart-bar-column:hover .chart-bar-fill {
-  background: linear-gradient(110deg, #1d6fe6, #2463d8);
+  background: linear-gradient(180deg, #2563eb, #1d4ed8);
 }
 
-:where(.worker-earnings) .chart-bar-column.active .chart-bar-fill {
-  background: linear-gradient(110deg, #174bcc, #0c42d6);
+:where(.worker-earnings) .chart-bar-column.active .chart-bar-fill,
+:where(.worker-earnings) .chart-bar-column.current-month .chart-bar-fill {
+  background: linear-gradient(180deg, #1d4ed8, #1e40af);
+  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.35);
 }
 
 :where(.worker-earnings) .chart-bar-month {
   margin-top: 10px;
-  font-size: 10px;
-  color: #6680b2;
+  font-size: 12px;
   font-weight: 600;
+  color: #64748b;
   transition: color 0.15s ease, font-weight 0.15s ease;
+  line-height: 1;
 }
 
-:where(.worker-earnings) .chart-bar-column.active .chart-bar-month {
+:where(.worker-earnings) .chart-bar-column.active .chart-bar-month,
+:where(.worker-earnings) .chart-bar-column.current-month .chart-bar-month {
   font-weight: 800;
-  color: var(--primary);
+  color: #1e3a8a;
 }
 
 /* ── Recent Transactions ── */
@@ -716,25 +710,25 @@ body:has(.worker-earnings) {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  min-height: 94px;
-  padding: 13px 15px;
-  border-radius: 15px;
-  background: var(--earnings-glass);
-  box-shadow: var(--earnings-shadow);
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 :where(.worker-earnings) .transaction-row-card:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
 :where(.worker-earnings) .transaction-left-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex: 1;
   overflow: hidden;
   min-width: 0;
@@ -743,18 +737,18 @@ body:has(.worker-earnings) {
 :where(.worker-earnings) .transaction-circle-icon {
   display: grid;
   place-items: center;
-  width: 51px;
-  height: 51px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  color: #0db681;
-  background: linear-gradient(135deg, #e4fff4, #bff9e5);
-  box-shadow: inset 1px 1px 2px #fff, 3px 5px 10px rgba(52,181,144,.15);
+  color: #059669;
+  background: #d1fae5;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
   flex-shrink: 0;
 }
 
 :where(.worker-earnings) .transaction-circle-icon svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
 }
 
 :where(.worker-earnings) .transaction-details {
@@ -766,18 +760,28 @@ body:has(.worker-earnings) {
 }
 
 :where(.worker-earnings) .transaction-service-name {
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
-  color: #07104c;
+  color: #0f172a;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 1.3;
+}
+
+:where(.worker-earnings) .transaction-customer-meta {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-:where(.worker-earnings) .transaction-customer-meta,
 :where(.worker-earnings) .transaction-date-meta {
-  font-size: 10px;
-  color: #6b84b8;
+  font-size: 12px;
+  font-weight: 500;
+  color: #94a3b8;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -792,18 +796,115 @@ body:has(.worker-earnings) {
 }
 
 :where(.worker-earnings) .transaction-amount-received {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 800;
-  color: #008b6b;
+  color: #16a34a;
+  line-height: 1.2;
 }
 
 :where(.worker-earnings) .badge-received {
-  padding: 5px 9px;
-  background: #d5ffee;
-  color: #008865;
-  font-size: 9px;
+  padding: 4px 12px;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 11.5px;
   font-weight: 700;
   border-radius: var(--radius-pill);
+  line-height: 1.3;
+  display: inline-block;
+}
+
+/* ── Withdraw Earnings ── */
+:where(.worker-earnings) .withdraw-earnings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+:where(.worker-earnings) .withdraw-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+:where(.worker-earnings) .withdraw-left-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+:where(.worker-earnings) .withdraw-circle-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #2563eb;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+}
+
+:where(.worker-earnings) .withdraw-circle-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+:where(.worker-earnings) .withdraw-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+:where(.worker-earnings) .withdraw-title {
+  font-size: 15.5px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+:where(.worker-earnings) .withdraw-subtitle {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+:where(.worker-earnings) .withdraw-now-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 9px 15px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+}
+
+:where(.worker-earnings) .withdraw-now-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+:where(.worker-earnings) .withdraw-btn-arrow {
+  font-size: 15px;
+  line-height: 1;
 }
 
 /* ── Toast ── */
@@ -813,7 +914,7 @@ body:has(.worker-earnings) {
   left: 50%;
   transform: translateX(-50%) translateY(-100px);
   background-color: var(--text-dark);
-  color: #FFFFFF;
+  color: #ffffff;
   padding: 10px 20px;
   border-radius: var(--radius-pill);
   font-size: 13px;
@@ -899,7 +1000,7 @@ body:has(.worker-earnings) {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -964,8 +1065,9 @@ body:has(.worker-earnings) {
   height: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
   padding: 0 var(--safe-area-right) var(--safe-area-bottom) var(--safe-area-left);
   border-radius: 0;
-  background: rgba(234,244,255,.93);
-  box-shadow: inset 0 1px 0 #fff, 0 -5px 18px rgba(126,172,220,.09);
+  background: rgba(255, 255, 255, 0.94);
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 -4px 20px rgba(15, 23, 42, 0.05);
   backdrop-filter: blur(18px);
   z-index: 60;
   box-sizing: border-box;
@@ -1003,8 +1105,8 @@ body:has(.worker-earnings) {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  gap: 5px;
-  color: #617aaf;
+  gap: 4px;
+  color: #64748b;
   padding: 4px 0;
   transition: color 0.15s ease, transform 0.15s ease;
   user-select: none;
@@ -1012,30 +1114,27 @@ body:has(.worker-earnings) {
 }
 
 :where(.worker-earnings) .nav-icon-box {
-  width: 29px;
-  height: 29px;
+  width: 48px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 16px;
   background: transparent;
-  box-shadow: none;
   transition: all 0.2s ease;
 }
 
-:where(.worker-earnings) .nav-icon-svg {
-  width: 25px;
-  height: 25px;
-  fill: currentColor;
-  transition: transform 0.15s ease;
+:where(.worker-earnings) .nav-icon-box svg {
+  width: 22px;
+  height: 22px;
+  color: currentColor;
 }
 
 :where(.worker-earnings) .nav-tab-label {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
-  color: #617aaf;
+  color: #64748b;
   line-height: 1.2;
-  letter-spacing: -0.15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1048,20 +1147,16 @@ body:has(.worker-earnings) {
 }
 
 :where(.worker-earnings) .nav-tab-link.active {
-  color: #1b59f3;
+  color: #2563eb;
 }
 
 :where(.worker-earnings) .nav-tab-link.active .nav-icon-box {
-  background: transparent;
-  box-shadow: none;
-}
-
-:where(.worker-earnings) .nav-tab-link.active .nav-icon-svg {
-  fill: #1b59f3;
+  background: #dbeafe;
+  color: #2563eb;
 }
 
 :where(.worker-earnings) .nav-tab-link.active .nav-tab-label {
-  color: #1b59f3;
+  color: #2563eb;
   font-weight: 800;
 }
 
@@ -1075,122 +1170,49 @@ body:has(.worker-earnings) {
   border-radius: var(--radius-xs);
 }
 
-/* ── Responsive Safeguards ── */
-@media (max-width: 767px) {
-  :where(.worker-earnings) .app-shell,
-  :where(.worker-earnings) .main-content,
-  :where(.worker-earnings) .earnings-hero-banner,
-  :where(.worker-earnings) .stats-container,
-  :where(.worker-earnings) .earnings-chart-section,
-  :where(.worker-earnings) .recent-transactions-section,
-  :where(.worker-earnings) .chart-card-container {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-
-  :where(.worker-earnings) .earnings-hero-top,
-  :where(.worker-earnings) .earnings-hero-label,
-  :where(.worker-earnings) .pending-payment-pill,
-  :where(.worker-earnings) .transaction-left-group,
-  :where(.worker-earnings) .transaction-details {
-    min-width: 0;
-  }
-
-  :where(.worker-earnings) .stats-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
-  }
-
-  :where(.worker-earnings) .stat-card-textonly {
-    min-height: 97px;
-    padding: 9px 3px 12px;
-  }
-
-  :where(.worker-earnings) .stat-icon-wrapper {
-    width: 37px;
-    height: 37px;
-    margin-bottom: 7px;
-  }
-
-  :where(.worker-earnings) .stat-icon {
-    width: 23px;
-    height: 23px;
-  }
-
-  :where(.worker-earnings) .stat-card-textonly .stat-number {
-    font-size: 17px;
-    letter-spacing: -0.6px;
-  }
-
-  :where(.worker-earnings) .stat-card-textonly .stat-title {
-    font-size: 8.5px;
-  }
-}
-
-@media (max-width: 440px) {
+/* ── Responsive Safeguards (No scaling hacks) ── */
+@media (max-width: 380px) {
   :where(.worker-earnings) .main-content {
-    padding-top: 18px;
-    padding-bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 24px);
-  }
-
-  :where(.worker-earnings) .chart-card-container {
-    height: auto;
-    min-height: 190px;
-    padding-right: 12px;
-    padding-bottom: 15px;
-  }
-
-  :where(.worker-earnings) .chart-card-container::after {
-    right: 12px;
-    bottom: 49px;
-  }
-
-  :where(.worker-earnings) .bar-chart-flex {
-    height: 150px;
-    gap: 4px;
-  }
-
-  :where(.worker-earnings) .chart-bar-fill {
-    width: min(28px, 78%);
-  }
-
-  :where(.worker-earnings) .chart-bar-month {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 374px) {
-  :where(.worker-earnings) .main-content {
-    padding-left: calc(12px + var(--safe-area-left));
-    padding-right: calc(12px + var(--safe-area-right));
+    padding-left: calc(14px + var(--safe-area-left));
+    padding-right: calc(14px + var(--safe-area-right));
+    gap: 16px;
   }
 
   :where(.worker-earnings) .page-main-title {
-    font-size: 27px;
+    font-size: 26px;
   }
 
   :where(.worker-earnings) .period-filter-btn {
-    padding: 0 9px;
-    font-size: 10px;
-  }
-
-  :where(.worker-earnings) .pending-payment-pill {
-    padding: 7px 6px;
-    font-size: 9px;
-  }
-
-  :where(.worker-earnings) .pending-pill-amount {
-    font-size: 10px;
+    padding: 0 10px;
+    height: 38px;
+    font-size: 12.5px;
   }
 
   :where(.worker-earnings) .earnings-hero-main-amount {
     font-size: 32px;
   }
 
-  :where(.worker-earnings) .earnings-hero-top {
+  :where(.worker-earnings) .stats-grid {
     gap: 6px;
+  }
+
+  :where(.worker-earnings) .stat-card {
+    min-height: 108px;
+    padding: 10px 2px 10px;
+  }
+
+  :where(.worker-earnings) .stat-icon-wrapper {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 6px;
+  }
+
+  :where(.worker-earnings) .stat-card .stat-number {
+    font-size: 19px;
+  }
+
+  :where(.worker-earnings) .stat-card .stat-number-currency {
+    font-size: 12px;
   }
 }
 
@@ -1247,41 +1269,25 @@ body:has(.worker-earnings) {
 }
 
 /* ── Responsive: Tablet ── */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   body:has(.worker-earnings) {
     padding: 24px 0;
-    align-items: flex-start;
+    align-items: center;
   }
 
   :where(.worker-earnings) .app-shell {
+    max-width: 440px;
     border-radius: var(--radius-xl);
     overflow: hidden;
     min-height: calc(100vh - 48px);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
   }
 
   :where(.worker-earnings) .bottom-nav-bar {
+    max-width: 440px;
+    margin-inline: auto;
     border-bottom-left-radius: var(--radius-xl);
     border-bottom-right-radius: var(--radius-xl);
-  }
-
-  :where(.worker-earnings) .main-content {
-    padding: 25px 26px calc(var(--bottom-nav-height) + 26px);
-  }
-
-  :where(.worker-earnings) .stat-card-textonly {
-    min-height: 138px;
-  }
-
-  :where(.worker-earnings) .stat-card-textonly .stat-number {
-    font-size: 23px;
-  }
-
-  :where(.worker-earnings) .stat-card-textonly .stat-title {
-    font-size: 12px;
-  }
-
-  :where(.worker-earnings) .chart-card-container {
-    padding-top: 30px;
   }
 }
 
@@ -1290,12 +1296,12 @@ body:has(.worker-earnings) {
   body:has(.worker-earnings) {
     padding: 40px 0;
     align-items: center;
-    background: linear-gradient(135deg, #DFE6F3 0%, #CCD9ED 100%);
+    background: linear-gradient(135deg, #dfe6f3 0%, #ccd9ed 100%);
   }
 
   :where(.worker-earnings) .app-shell {
     max-width: 440px;
-    height: 900px;
+    min-height: 900px;
     border-radius: 28px;
     box-shadow: 0 20px 60px rgba(15, 23, 42, 0.14);
     overflow: hidden;
@@ -1309,7 +1315,7 @@ body:has(.worker-earnings) {
   :where(.worker-earnings) .main-content {
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #CBD5E1 transparent;
+    scrollbar-color: #cbd5e1 transparent;
   }
 
   :where(.worker-earnings) .main-content::-webkit-scrollbar {
@@ -1317,7 +1323,7 @@ body:has(.worker-earnings) {
   }
 
   :where(.worker-earnings) .main-content::-webkit-scrollbar-thumb {
-    background-color: #CBD5E1;
+    background-color: #cbd5e1;
     border-radius: 4px;
   }
 
@@ -1346,16 +1352,6 @@ body:has(.worker-earnings) {
 .worker-earnings .offcanvas-drawer { max-width: 100%; overflow-y: auto; }
 .worker-earnings .offcanvas-drawer > * { flex-shrink: 0; }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-  .worker-earnings .app-shell { max-width: 440px; }
-  .worker-earnings .bottom-nav-bar { max-width: 440px; margin-inline: auto; }
-}
-
-@media (min-width: 1024px) {
-  .worker-earnings .main-content { min-height: 0; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .worker-earnings *, .worker-earnings *::before, .worker-earnings *::after { animation: none; transition: none; scroll-behavior: auto; }
 }
-

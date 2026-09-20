@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import HireMeIcon from "./HireMeIcon";
 import Logo from "./Logo";
+import NotificationButton from "./NotificationButton";
 
 export default function AppHeader({
   role,
@@ -26,7 +27,7 @@ export default function AppHeader({
   const defaultHome = isWorker ? "/worker/home" : "/customer/home";
   const defaultProfile = isWorker ? "/worker/profile" : "/customer/profile";
   const defaultAvatarLabel = isWorker
-    ? "Worker Profile — Nimal Perera"
+    ? "My Profile"
     : "Customer profile";
 
   return (
@@ -47,10 +48,10 @@ export default function AppHeader({
             ref={menuRef}
             type="button"
             onClick={onMenuClick}
-            aria-controls={isWorker ? "offcanvasDrawer" : undefined}
+            aria-controls={isWorker || menuRef ? "offcanvasDrawer" : undefined}
             className="menu-btn"
             aria-label={isWorker ? "Open Navigation Menu" : "Open menu"}
-            aria-expanded={isWorker ? drawerOpen : "false"}
+            aria-expanded={isWorker || menuRef ? drawerOpen : "false"}
           >
             <HireMeIcon name="menu" />
           </button>
@@ -63,16 +64,10 @@ export default function AppHeader({
         />
 
         <div className="header-actions">
-          <button
-            id="notificationBtn"
-            type="button"
+          <NotificationButton
             onClick={onNotificationClick}
-            className={`notification-btn${!isWorker ? " customer-notification" : ""}`}
             aria-label={notificationAriaLabel}
-          >
-            <HireMeIcon name="notifications" />
-            {!isWorker && <i aria-hidden="true" />}
-          </button>
+          />
           <Link
             to={profileTo || defaultProfile}
             className="user-avatar-link"

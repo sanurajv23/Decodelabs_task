@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../../components/HireMeIcon";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import HireMeIcon from "../../../components/HireMeIcon";
@@ -129,9 +130,7 @@ export default function WorkerWorkDetails() {
             onClick={handleCategoryCycle}
           >
             <div className="reg-input-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="briefcase" /></svg>
             </div>
             <input
               type="text"
@@ -150,9 +149,7 @@ export default function WorkerWorkDetails() {
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
+              ><HireMeIconArtwork name="expand" /></svg>
             </span>
           </div>
         </div>
@@ -189,9 +186,7 @@ export default function WorkerWorkDetails() {
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
+              ><HireMeIconArtwork name="expand" /></svg>
             </span>
           </div>
         </div>
@@ -272,9 +267,7 @@ export default function WorkerWorkDetails() {
           </label>
           <div className="reg-input-pill">
             <div className="reg-input-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="balance" /></svg>
             </div>
             <input
               type="text"
@@ -365,9 +358,7 @@ export default function WorkerWorkDetails() {
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
+              ><HireMeIconArtwork name="expand" /></svg>
             </span>
           </div>
         </div>
@@ -400,12 +391,23 @@ export default function WorkerWorkDetails() {
         </div>
 
         {/* Primary Action Button */}
-        <Link
-          to="/worker/register/complete"
+        <button
+          type="button"
           className="reg-btn-primary"
           style={{ marginTop: "14px" }}
+          onClick={() => {
+            try {
+              window.sessionStorage.setItem(
+                "workerWorkData",
+                JSON.stringify({ category, skills, expLevel, rate, area, availability, bio })
+              );
+            } catch {
+              // Ignore storage errors
+            }
+            window.location.href = "/worker/register/complete";
+          }}
         >
-          <span>Save & Continue</span>
+          <span>Save &amp; Continue</span>
           <div className="reg-btn-arrow">
             <svg
               viewBox="0 0 24 24"
@@ -414,12 +416,9 @@ export default function WorkerWorkDetails() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            ><HireMeIconArtwork name="forward" /></svg>
           </div>
-        </Link>
+        </button>
 
         {/* Toast */}
         {toast && (

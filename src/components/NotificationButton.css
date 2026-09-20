@@ -1,0 +1,42 @@
+/* One notification control for every role and header, independent of page CSS. */
+.notification-btn {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(239, 247, 255, 0.85));
+  box-shadow: 3px 4px 10px rgba(126, 164, 213, 0.22), inset 0 1px 2px #fff;
+  cursor: pointer;
+  overflow: visible;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.notification-btn:hover {
+  background: #f8fbff;
+}
+
+.notification-btn:focus-visible {
+  outline: 2px solid #394b88;
+  outline-offset: 3px;
+}
+
+.notification-btn > .notification-badge {
+  box-sizing: border-box;
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #ff424c;
+  pointer-events: none;
+}

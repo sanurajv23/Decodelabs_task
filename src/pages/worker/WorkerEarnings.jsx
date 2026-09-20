@@ -1,6 +1,7 @@
 import AppHeader from "../../components/AppHeader";
 import AppShell from "../../components/AppShell";
 import BottomNavigation from "../../components/BottomNavigation";
+import HireMeIcon from "../../components/HireMeIcon";
 import Toast from "../../components/Toast";
 import WorkerDrawer from "../../components/WorkerDrawer";
 import { useEffect, useRef, useState } from "react";
@@ -11,14 +12,15 @@ const TIMEFRAMES = ["This Month", "Last Month", "Last 3 Months", "Year 2026"];
 const CHART_DATA = [
   { month: "March", label: "Mar", height: "50%", amount: "LKR 6,000" },
   { month: "April", label: "Apr", height: "75%", amount: "LKR 9,000" },
-  { month: "May", label: "May", height: "92%", amount: "LKR 11,000" },
-  { month: "June", label: "Jun", height: "58%", amount: "LKR 7,000" },
-  { month: "July", label: "Jul", height: "83%", amount: "LKR 10,000" },
+  { month: "May", label: "May", height: "91.6%", amount: "LKR 11,000" },
+  { month: "June", label: "Jun", height: "62.5%", amount: "LKR 7,500" },
+  { month: "July", label: "Jul", height: "83.3%", amount: "LKR 10,000" },
   { month: "August", label: "Aug", height: "100%", amount: "LKR 12,000" },
-  { month: "September", label: "Sep", height: "100%", amount: "LKR 28,500" },
+  { month: "September", label: "Sep", height: "104%", amount: "LKR 28,500", isCurrent: true },
 ];
 
-// Markup and SVG artwork preserved from pages/worker-earnings.html.
+const Y_AXIS_LABELS = ["12K", "9K", "6K", "3K", "0"];
+
 export default function WorkerEarnings() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [toast, setToast] = useState("");
@@ -113,11 +115,16 @@ export default function WorkerEarnings() {
 
   function handleSeeAllTransactions(e) {
     e.preventDefault();
-    showToast("📄 Loading all 12 transaction records...");
+    showToast("📄 Loading all transaction records...");
   }
 
   function handleTransactionClick(service, amount) {
     showToast(`Invoice: ${service} (${amount})`);
+  }
+
+  function handleWithdrawClick(e) {
+    e.preventDefault();
+    showToast("💸 Withdrawal request initiated for LKR 28,500");
   }
 
   return (
@@ -146,15 +153,13 @@ export default function WorkerEarnings() {
         <main className="main-content" ref={mainRef}>
           {/* PAGE HEADER ROW: TITLE & FILTER */}
           <section
-            className="section-header"
+            className="page-header-row"
             aria-label="Earnings Title and Timeframe"
           >
             <div className="page-title-section">
               <h1 className="page-main-title">My Earnings</h1>
               <p className="page-subtitle">
-                Track your income and payment
-                <br />
-                history
+                Track your income and payment history
               </p>
             </div>
 
@@ -164,20 +169,7 @@ export default function WorkerEarnings() {
               onClick={handleTimeframeClick}
               aria-label={`Filter timeframe: ${TIMEFRAMES[currentTimeframeIndex]}`}
             >
-              <svg
-                className="period-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
+              <HireMeIcon name="calendar" />
               <span>{TIMEFRAMES[currentTimeframeIndex]}</span>
               <span className="period-chevron">&#9660;</span>
             </button>
@@ -197,19 +189,8 @@ export default function WorkerEarnings() {
                 onClick={handlePendingPaymentClick}
                 aria-label="Pending Payment: LKR 5,000"
               >
-                <svg
-                  className="pending-pill-icon"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                  <line x1="6" y1="12" x2="6" y2="12.01"></line>
-                </svg>
-                <span>Pending Payment</span>
+                <HireMeIcon name="payment" />
+                <span className="pending-pill-label">Pending Payment</span>
                 <span className="pending-pill-amount">LKR 5,000</span>
                 <span className="pending-pill-chevron" aria-hidden="true">
                   &rsaquo;
@@ -225,6 +206,14 @@ export default function WorkerEarnings() {
                 compared to last month
               </span>
             </div>
+
+            {/* Ascending bar decoration on right */}
+            <div className="hero-chart-decoration" aria-hidden="true">
+              <span className="hero-bar hero-bar-1" />
+              <span className="hero-bar hero-bar-2" />
+              <span className="hero-bar hero-bar-3" />
+              <span className="hero-bar hero-bar-4" />
+            </div>
           </section>
 
           {/* PERFORMANCE STATISTICS CARDS */}
@@ -234,69 +223,36 @@ export default function WorkerEarnings() {
           >
             <div className="stats-grid">
               {/* Card 1: Total Jobs */}
-              <div className="stat-card stat-card-jobs stat-card-textonly">
+              <div className="stat-card stat-card-jobs">
                 <span className="stat-icon-wrapper" aria-hidden="true">
-                  <svg
-                    className="stat-icon"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 0h-4V4h4v2z" />
-                  </svg>
+                  <HireMeIcon name="briefcase" />
                 </span>
                 <span className="stat-number">12</span>
                 <span className="stat-title">Total Jobs</span>
               </div>
 
               {/* Card 2: Completed */}
-              <div className="stat-card stat-card-completed stat-card-textonly">
+              <div className="stat-card stat-card-completed">
                 <span className="stat-icon-wrapper" aria-hidden="true">
-                  <svg
-                    className="stat-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
+                  <HireMeIcon name="check" />
                 </span>
                 <span className="stat-number">10</span>
                 <span className="stat-title">Completed</span>
               </div>
 
               {/* Card 3: In Progress */}
-              <div className="stat-card stat-card-progress stat-card-textonly">
+              <div className="stat-card stat-card-progress">
                 <span className="stat-icon-wrapper" aria-hidden="true">
-                  <svg
-                    className="stat-icon"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="12" cy="12" r="9" />
-                    <polyline points="12 7 12 12 16 14" />
-                  </svg>
+                  <HireMeIcon name="clock" />
                 </span>
                 <span className="stat-number">2</span>
                 <span className="stat-title">In Progress</span>
               </div>
 
               {/* Card 4: Pending Payment */}
-              <div className="stat-card stat-card-earnings stat-card-textonly">
+              <div className="stat-card stat-card-earnings">
                 <span className="stat-icon-wrapper" aria-hidden="true">
-                  <svg
-                    className="stat-icon"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M20 7V6a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-1h-9a3 3 0 0 1 0-6h9zm-9 2a1 1 0 0 0 0 2h10V9H11z" />
-                  </svg>
+                  <HireMeIcon name="wallet" />
                 </span>
                 <span className="stat-number stat-number-currency">
                   LKR 5,000
@@ -313,19 +269,9 @@ export default function WorkerEarnings() {
           >
             <div className="section-header">
               <div className="section-title-with-icon">
-                <svg
-                  className="section-title-svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                  <line x1="9" y1="3" x2="9" y2="21"></line>
-                  <line x1="15" y1="3" x2="15" y2="21"></line>
-                </svg>
+                <span className="section-title-icon" aria-hidden="true">
+                  <HireMeIcon name="chart" />
+                </span>
                 <span>Earnings Overview</span>
               </div>
               <a
@@ -334,30 +280,54 @@ export default function WorkerEarnings() {
                 id="viewChartDetailsBtn"
                 onClick={handleViewChartDetails}
               >
-                View Details
+                <span>View Details</span>
+                <span className="see-all-arrow" aria-hidden="true">&rsaquo;</span>
               </a>
             </div>
 
             <div className="chart-card-container">
-              <div className="bar-chart-flex">
-                {CHART_DATA.map((item) => {
-                  const isActive = activeMonth === item.month;
-                  return (
-                    <button
-                      key={item.month}
-                      type="button"
-                      className={`chart-bar-column${isActive ? " active" : ""}`}
-                      onClick={() => handleBarClick(item)}
-                      aria-label={`${item.month}: ${item.amount}`}
-                    >
-                      <div
-                        className="chart-bar-fill"
-                        style={{ height: item.height }}
-                      ></div>
-                      <span className="chart-bar-month">{item.label}</span>
-                    </button>
-                  );
-                })}
+              <div className="chart-grid-layout">
+                {/* Y-Axis Labels Column */}
+                <div className="chart-y-axis" aria-hidden="true">
+                  {Y_AXIS_LABELS.map((lbl) => (
+                    <span key={lbl} className="chart-y-label">
+                      {lbl}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Bars Area with Grid Lines */}
+                <div className="chart-bars-wrapper">
+                  <div className="chart-grid-lines" aria-hidden="true">
+                    {Y_AXIS_LABELS.map((lbl) => (
+                      <div key={lbl} className="chart-grid-line" />
+                    ))}
+                  </div>
+
+                  <div className="bar-chart-flex">
+                    {CHART_DATA.map((item) => {
+                      const isActive = activeMonth === item.month;
+                      const isHighlighted = item.isCurrent;
+                      return (
+                        <button
+                          key={item.month}
+                          type="button"
+                          className={`chart-bar-column${isActive ? " active" : ""}${isHighlighted ? " current-month" : ""}`}
+                          onClick={() => handleBarClick(item)}
+                          aria-label={`${item.month}: ${item.amount}`}
+                        >
+                          <div className="chart-bar-track">
+                            <div
+                              className="chart-bar-fill"
+                              style={{ height: item.height }}
+                            />
+                          </div>
+                          <span className="chart-bar-month">{item.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -369,19 +339,9 @@ export default function WorkerEarnings() {
           >
             <div className="section-header">
               <div className="section-title-with-icon">
-                <svg
-                  className="section-title-svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                  <line x1="3" y1="9" x2="21" y2="9"></line>
-                  <line x1="9" y1="21" x2="9" y2="9"></line>
-                </svg>
+                <span className="section-title-icon" aria-hidden="true">
+                  <HireMeIcon name="calendar" />
+                </span>
                 <span>Recent Transactions</span>
               </div>
               <a
@@ -390,7 +350,8 @@ export default function WorkerEarnings() {
                 id="seeAllTransactionsBtn"
                 onClick={handleSeeAllTransactions}
               >
-                See All
+                <span>See All</span>
+                <span className="see-all-arrow" aria-hidden="true">&rsaquo;</span>
               </a>
             </div>
 
@@ -407,9 +368,7 @@ export default function WorkerEarnings() {
                     className="transaction-circle-icon circle-mint"
                     aria-hidden="true"
                   >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-4.25v-6h-6.5v6H4.5A1.5 1.5 0 0 1 3 19.5v-9z" />
-                    </svg>
+                    <HireMeIcon name="home" />
                   </div>
                   <div className="transaction-details">
                     <h4 className="transaction-service-name">Home Cleaning</h4>
@@ -429,6 +388,35 @@ export default function WorkerEarnings() {
                 </div>
               </li>
             </ul>
+          </section>
+
+          {/* WITHDRAW EARNINGS */}
+          <section
+            className="withdraw-earnings-section"
+            aria-label="Withdraw Earnings"
+          >
+            <div className="withdraw-card">
+              <div className="withdraw-left-group">
+                <div className="withdraw-circle-icon" aria-hidden="true">
+                  <HireMeIcon name="wallet" />
+                </div>
+                <div className="withdraw-details">
+                  <h3 className="withdraw-title">Withdraw Earnings</h3>
+                  <p className="withdraw-subtitle">
+                    Transfer your earnings to your bank account
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="withdraw-now-btn"
+                onClick={handleWithdrawClick}
+                aria-label="Withdraw Now"
+              >
+                <span>Withdraw Now</span>
+                <span className="withdraw-btn-arrow" aria-hidden="true">&rsaquo;</span>
+              </button>
+            </div>
           </section>
         </main>
 

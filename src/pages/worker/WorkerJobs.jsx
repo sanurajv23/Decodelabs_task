@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../components/HireMeIcon";
 import AppHeader from "../../components/AppHeader";
 import AppShell from "../../components/AppShell";
 import BottomNavigation from "../../components/BottomNavigation";
@@ -167,12 +168,7 @@ export default function WorkerJobs() {
                 <article className="job-card-detailed">
                   <div className="job-card-header">
                     <div className="service-icon-box icon-box-ac">
-                      <svg className="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="12" y1="2" x2="12" y2="22"></line>
-                        <line x1="2" y1="12" x2="22" y2="12"></line>
-                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
-                        <line x1="19.07" y1="4.93" x2="4.93" y2="19.07"></line>
-                      </svg>
+                      <svg className="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="ac" /></svg>
                     </div>
                     <div className="job-card-body">
                       <div className="job-card-top-row">
@@ -180,51 +176,30 @@ export default function WorkerJobs() {
                         <span className="badge badge-confirmed">Confirmed</span>
                       </div>
                       <div className="job-meta-row-item">
-                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                          <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
+                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="user" /></svg>
                         <span>Aruna Perera</span>
                       </div>
                       <div className="job-meta-row-item">
-                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                          <line x1="16" y1="2" x2="16" y2="6"></line>
-                          <line x1="8" y1="2" x2="8" y2="6"></line>
-                          <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
+                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="calendar" /></svg>
                         <span>Sat, 6 Sep 2026</span>
                       </div>
                       <div className="job-meta-row-item">
-                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
+                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="clock" /></svg>
                         <span>12:00 PM - 1:00 PM</span>
                       </div>
                       <div className="job-meta-row-item">
-                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                        </svg>
+                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="location" /></svg>
                         <span>No. 123, Lake Road, Colombo 06</span>
                       </div>
                     </div>
                   </div>
                   <div className="job-actions-row">
                     <button className="job-action-btn btn-outline-blue btn-reschedule" onClick={() => handleReschedule("AC Repair")}>
-                      <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
+                      <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="calendar" /></svg>
                       <span>Reschedule</span>
                     </button>
                     <button className="job-action-btn btn-outline-red btn-cancel" onClick={() => handleCancel("AC Repair")}>
-                      <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v5M14 11v5"></path>
-                      </svg>
+                      <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><HireMeIconArtwork name="delete" /></svg>
                       <span>Cancel</span>
                     </button>
                   </div>
@@ -234,10 +209,7 @@ export default function WorkerJobs() {
                 <article className="job-card-detailed">
                   <div className="job-card-header">
                     <div className="service-icon-box icon-box-plumbing">
-                      <svg className="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 2c0 3-4 6-4 9a4 4 0 0 0 8 0c0-3-4-6-4-9z"></path>
-                        <path d="M6 16c0 2 2 3 4 3s4-1 4-3"></path>
-                      </svg>
+                      <svg className="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="plumbing" /></svg>
                     </div>
                     <div className="job-card-body">
                       <div className="job-card-top-row">
@@ -245,51 +217,30 @@ export default function WorkerJobs() {
                         <span className="badge badge-confirmed">Confirmed</span>
                       </div>
                       <div className="job-meta-row-item">
-                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                          <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
+                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="user" /></svg>
                         <span>Sanduni Fernando</span>
                       </div>
                       <div className="job-meta-row-item">
-                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                          <line x1="16" y1="2" x2="16" y2="6"></line>
-                          <line x1="8" y1="2" x2="8" y2="6"></line>
-                          <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
+                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="calendar" /></svg>
                         <span>Sun, 7 Sep 2026</span>
                       </div>
                       <div className="job-meta-row-item">
-                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
+                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="clock" /></svg>
                         <span>3:00 PM - 5:00 PM</span>
                       </div>
                       <div className="job-meta-row-item">
-                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <circle cx="12" cy="12" r="10"></circle>
-                          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                        </svg>
+                        <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="location" /></svg>
                         <span>No. 45, Galle Road, Dehiwala</span>
                       </div>
                     </div>
                   </div>
                   <div className="job-actions-row">
                     <button className="job-action-btn btn-outline-blue btn-reschedule" onClick={() => handleReschedule("Plumbing Service")}>
-                      <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
+                      <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="calendar" /></svg>
                       <span>Reschedule</span>
                     </button>
                     <button className="job-action-btn btn-outline-red btn-cancel" onClick={() => handleCancel("Plumbing Service")}>
-                      <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v5M14 11v5"></path>
-                      </svg>
+                      <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><HireMeIconArtwork name="delete" /></svg>
                       <span>Cancel</span>
                     </button>
                   </div>
@@ -310,10 +261,7 @@ export default function WorkerJobs() {
               <article className="job-card-detailed">
                 <div className="job-card-header">
                   <div className="service-icon-box icon-box-electrical">
-                    <svg className="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 2c0 3-4 6-4 9a4 4 0 0 0 8 0c0-3-4-6-4-9z"></path>
-                      <path d="M6 16c0 2 2 3 4 3s4-1 4-3"></path>
-                    </svg>
+                    <svg className="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="plumbing" /></svg>
                   </div>
                   <div className="job-card-body">
                     <div className="job-card-top-row">
@@ -323,47 +271,26 @@ export default function WorkerJobs() {
                       </span>
                     </div>
                     <div className="job-meta-row-item">
-                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                      </svg>
+                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="user" /></svg>
                       <span>Tharindu Silva</span>
                     </div>
                     <div className="job-meta-row-item">
-                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
+                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="calendar" /></svg>
                       <span>Mon, 8 Sep 2026</span>
                     </div>
                     <div className="job-meta-row-item">
-                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
+                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="clock" /></svg>
                       <span>10:00 AM - 12:00 PM</span>
                     </div>
                     <div className="job-meta-row-item">
-                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                      </svg>
+                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="location" /></svg>
                       <span>No. 78, Kandy Road, Colombo 08</span>
                     </div>
                   </div>
                 </div>
                 <div className="job-actions-row">
                   <button className="job-action-btn btn-outline-blue btn-details" onClick={() => handleViewDetails("Electrical Repair")}>
-                    <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="8" y1="6" x2="21" y2="6"></line>
-                      <line x1="8" y1="12" x2="21" y2="12"></line>
-                      <line x1="8" y1="18" x2="21" y2="18"></line>
-                      <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                      <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                      <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                    </svg>
+                    <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="details" /></svg>
                     <span>View Details</span>
                   </button>
                   <button
@@ -372,9 +299,7 @@ export default function WorkerJobs() {
                     disabled={!!completedJobs["Electrical Repair"]}
                     style={completedJobs["Electrical Repair"] ? { backgroundColor: "#15803D", borderColor: "#15803D" } : undefined}
                   >
-                    <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+                    <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="check" /></svg>
                     <span>{completedJobs["Electrical Repair"] ? "Completed" : "Mark as Completed"}</span>
                   </button>
                 </div>
@@ -393,9 +318,7 @@ export default function WorkerJobs() {
               <article className="job-card-detailed">
                 <div className="job-card-header">
                   <div className="service-icon-box icon-box-cleaning">
-                    <svg className="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                    </svg>
+                    <svg className="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="cleaning" /></svg>
                   </div>
                   <div className="job-card-body">
                     <div className="job-card-top-row">
@@ -403,47 +326,26 @@ export default function WorkerJobs() {
                       <span className="badge badge-completed">Completed</span>
                     </div>
                     <div className="job-meta-row-item">
-                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                      </svg>
+                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="user" /></svg>
                       <span>Nadeesha Kumar</span>
                     </div>
                     <div className="job-meta-row-item">
-                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="16" y1="2" x2="16" y2="6"></line>
-                        <line x1="8" y1="2" x2="8" y2="6"></line>
-                        <line x1="3" y1="10" x2="21" y2="10"></line>
-                      </svg>
+                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="calendar" /></svg>
                       <span>Mon, 1 Sep 2026</span>
                     </div>
                     <div className="job-meta-row-item">
-                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polyline points="12 6 12 12 16 14"></polyline>
-                      </svg>
+                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="clock" /></svg>
                       <span>10:00 AM - 12:00 PM</span>
                     </div>
                     <div className="job-meta-row-item">
-                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                      </svg>
+                      <svg className="job-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="location" /></svg>
                       <span>No. 56, Flower Road, Colombo 07</span>
                     </div>
                   </div>
                 </div>
                 <div className="job-actions-row">
                   <button className="job-action-btn btn-outline-blue btn-details" onClick={() => handleViewDetails("Home Cleaning")}>
-                    <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="8" y1="6" x2="21" y2="6"></line>
-                      <line x1="8" y1="12" x2="21" y2="12"></line>
-                      <line x1="8" y1="18" x2="21" y2="18"></line>
-                      <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                      <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                      <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                    </svg>
+                    <svg className="job-action-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="details" /></svg>
                     <span>View Details</span>
                   </button>
                   <button className="job-action-btn btn-outline-blue btn-review" onClick={handleViewReview}>

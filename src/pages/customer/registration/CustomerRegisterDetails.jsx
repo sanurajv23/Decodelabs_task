@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../../components/HireMeIcon";
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HireMeIcon from "../../../components/HireMeIcon";
@@ -213,9 +214,7 @@ export default function CustomerRegisterDetails() {
               </label>
               <div className={`crd-input-pill ${errors.fullName ? "has-error" : ""}`}>
                 <div className="crd-input-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                  </svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="profile" /></svg>
                 </div>
                 <input
                   ref={fullNameRef}
@@ -238,9 +237,7 @@ export default function CustomerRegisterDetails() {
               </label>
               <div className={`crd-input-pill ${errors.nic ? "has-error" : ""}`}>
                 <div className="crd-input-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-9 3h2v2h-2V7zm0 4h2v2h-2v-2zm-4-4h2v2H7V7zm0 4h2v2H7v-2zm12 6H5v-1.5c0-.83 1.67-1.5 5-1.5s5 .67 5 1.5V17zm2-4h-4v-1h4v1zm0-3h-4V9h4v1z" />
-                  </svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="identity" /></svg>
                 </div>
                 <input
                   ref={nicRef}
@@ -266,9 +263,7 @@ export default function CustomerRegisterDetails() {
               </label>
               <div className={`crd-input-pill ${errors.password ? "has-error" : ""}`}>
                 <div className="crd-input-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-                  </svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="password" /></svg>
                 </div>
                 <input
                   ref={passwordRef}
@@ -298,10 +293,7 @@ export default function CustomerRegisterDetails() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden="true"
-                    >
-                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                      <line x1="1" y1="1" x2="23" y2="23" />
-                    </svg>
+                    ><HireMeIconArtwork name="hide-password" /></svg>
                   ) : (
                     <svg
                       viewBox="0 0 24 24"
@@ -311,10 +303,7 @@ export default function CustomerRegisterDetails() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden="true"
-                    >
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
+                    ><HireMeIconArtwork name="show-password" /></svg>
                   )}
                 </button>
               </div>
@@ -337,10 +326,7 @@ export default function CustomerRegisterDetails() {
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
+                ><HireMeIconArtwork name="forward" /></svg>
               </div>
             </button>
           </form>

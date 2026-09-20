@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../components/HireMeIcon";
 import AppHeader from "../../components/AppHeader";
 import AppShell from "../../components/AppShell";
 import BottomNavigation from "../../components/BottomNavigation";
@@ -326,9 +327,7 @@ export default function WorkerMessages() {
                   aria-label="Phone call"
                   onClick={() => showToast("Phone call will be available soon.")}
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M6.6 10.8c1.5 3 3.9 5.4 6.9 6.9l2.3-2.3c.3-.3.7-.4 1-.3 1.1.4 2.2.6 3.4.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.7 22 2 13.3 2 2.8c0-.6.4-1 1-1h4.3c.6 0 1 .4 1 1 0 1.2.2 2.3.6 3.4.1.3 0 .7-.3 1z" />
-                  </svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="call" /></svg>
                 </button>
                 <button
                   type="button"
@@ -344,11 +343,7 @@ export default function WorkerMessages() {
                   aria-label="More options"
                   onClick={() => showToast("More options will be available soon.")}
                 >
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <circle cx="12" cy="5" r="2" />
-                    <circle cx="12" cy="12" r="2" />
-                    <circle cx="12" cy="19" r="2" />
-                  </svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="more" /></svg>
                 </button>
               </div>
             </section>
@@ -431,16 +426,11 @@ export default function WorkerMessages() {
                   chatInputRef.current?.focus();
                 }}
               >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
-                </svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><HireMeIconArtwork name="smile" /></svg>
               </button>
             </div>
             <button className="send-btn" type="submit" aria-label="Send message">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="m3 11 18-8-7.5 18-2.4-7.6L3 11zm9.3 1.2 4.8-5.6-7 4 2.2 1.6z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="send" /></svg>
             </button>
           </form>
 

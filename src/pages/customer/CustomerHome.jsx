@@ -1,3 +1,6 @@
+const serviceIcons = {"ϟ":"electrical","♢":"plumbing","▰":"painting","⌁":"cleaning","✳":"ac"};
+import WorkerDrawer from "../../components/WorkerDrawer";
+import useNavigationDrawer from "../../components/useNavigationDrawer";
 import AppHeader from "../../components/AppHeader";
 import AppShell from "../../components/AppShell";
 import BottomNavigation from "../../components/BottomNavigation";
@@ -42,6 +45,7 @@ const workers = [
 ];
 
 function CustomerHome() {
+  const drawer = useNavigationDrawer();
   const [selectedCategory, setSelectedCategory] = useState("All Services");
   const [toast, setToast] = useState("");
   const toastTimer = useRef(null);
@@ -85,10 +89,13 @@ function CustomerHome() {
   return (
     <div className="customer-home">
       <Toast message={toast} />
-      <AppShell>
+      <WorkerDrawer role="customer" isOpen={drawer.isOpen} onClose={drawer.close} drawerRef={drawer.drawerRef} closeRef={drawer.closeRef} onShowToast={showToast} />
+      <AppShell inert={drawer.isOpen}>
         <AppHeader
           role="customer"
-          onMenuClick={() => showToast("Navigation menu is not available yet.")}
+          onMenuClick={drawer.open}
+          menuRef={drawer.menuRef}
+          drawerOpen={drawer.isOpen}
           onNotificationClick={() => showToast("You have 1 new notification.")}
           onLogoClick={scrollHomeToTop}
         />
@@ -117,7 +124,7 @@ function CustomerHome() {
               {categories.map(([name, iconClass, icon]) => (
                 <button key={name} type="button" className={`category${selectedCategory === name ? " active" : ""}`}
                   aria-pressed={selectedCategory === name} onClick={() => selectCategory(name)}>
-                  <b className={iconClass}>{icon}</b><span>{name}</span>
+                  <b className={iconClass}>{serviceIcons[icon] ? <HireMeIcon name={serviceIcons[icon]} size="large" color="inherit" /> : icon}</b><span>{name}</span>
                 </button>
               ))}
             </div>
@@ -128,12 +135,12 @@ function CustomerHome() {
               <h2>Need a Professional<br />Worker?</h2>
               <p>Get your tasks done quickly and safely<br />with trusted workers.</p>
               <button type="button" onClick={() => showToast("Choose a service to get started.")}>
-                Book a Service <span>›</span>
+                Book a Service <HireMeIcon name="chevron" size="medium" color="inherit" />
               </button>
             </div>
             <ul>
-              <li><i>♢</i>Verified Workers</li>
-              <li><i>◷</i>On-Time Service</li>
+              <li><i><HireMeIcon name="verified" size="small" color="inherit" /></i>Verified Workers</li>
+              <li><i><HireMeIcon name="clock" size="small" color="inherit" /></i>On-Time Service</li>
               <li><i>☆</i>Quality Work</li>
             </ul>
           </section>
@@ -141,16 +148,16 @@ function CustomerHome() {
           <section className="customer-section">
             <div className="customer-section-title">
               <h2><span className="section-mark fire">♨</span>Popular Services</h2>
-              <Link to="/customer/explore">View All <b>›</b></Link>
+              <Link to="/customer/explore">View All <b><HireMeIcon name="chevron" size="medium" color="inherit" /></b></Link>
             </div>
             <div className="popular-scroll">
               <div className="popular-cards">
-                {services.map(([name, type, icon, price]) => (
+                {services.map(([name, type, , price]) => (
                   <Link key={name} className="popular-card" to="/customer/explore">
-                    <i className={`service-icon ${type}`}>{icon}</i>
+                    <i className={`service-icon ${type}`}><HireMeIcon name={type} size="large" color="inherit" /></i>
                     <h3>{name}</h3>
                     <p>From LKR {price}</p>
-                    <b>›</b>
+                    <b><HireMeIcon name="chevron" size="medium" color="inherit" /></b>
                   </Link>
                 ))}
               </div>
@@ -160,12 +167,12 @@ function CustomerHome() {
           <section className="customer-section worker-section">
             <div className="customer-section-title">
               <h2><span className="section-mark">★</span>Top Rated Workers</h2>
-              <Link to="/customer/explore">View All <b>›</b></Link>
+              <Link to="/customer/explore">View All <b><HireMeIcon name="chevron" size="medium" color="inherit" /></b></Link>
             </div>
             <div className="worker-list">
               {workers.map((worker) => (
                 <article key={worker.name} className="customer-worker">
-                  <i className={`worker-service ${worker.type}`}>{worker.icon}</i>
+                  <i className={`worker-service ${worker.type}`}><HireMeIcon name={worker.type} size="large" color="inherit" /></i>
                   <div>
                     <h3>{worker.name}</h3>
                     <p className="rating">★ {worker.rating} <span>({worker.reviews} reviews)</span></p>

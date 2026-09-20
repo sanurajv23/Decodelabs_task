@@ -191,44 +191,6 @@ body:has(.worker-messages), body:has(.worker-chat) {
   margin-left: auto;
 }
 
-:where(.worker-messages) .notification-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--messages-glass);
-  box-shadow: var(--messages-shadow);
-  border: none;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-dark);
-  transition: background-color 0.15s ease;
-}
-
-:where(.worker-messages) .notification-btn:hover {
-  background-color: rgba(15, 23, 42, 0.05);
-}
-
-:where(.worker-messages) .notification-btn::after {
-  content: '';
-  position: absolute;
-  right: 2px;
-  top: 0;
-  width: 11px;
-  height: 11px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: #ff424c;
-}
-
-:where(.worker-messages) .notification-icon {
-  width: 21px;
-  height: 21px;
-  color: #394b88;
-}
-
 :where(.worker-messages) .user-avatar-link {
   display: block;
   text-decoration: none;
@@ -577,9 +539,7 @@ body:has(.worker-messages), body:has(.worker-chat) {
   position: relative;
 }
 
-:where(.worker-chat) .chat-back-btn,
-:where(.worker-chat) .notification-btn,
-:where(.worker-chat) .user-avatar-wrapper {
+:where(.worker-chat) .chat-back-btn, :where(.worker-chat) .user-avatar-wrapper {
   display: grid;
   place-items: center;
   width: 46px;
@@ -630,27 +590,6 @@ body:has(.worker-messages), body:has(.worker-chat) {
   align-items: center;
   gap: 14px;
   margin-left: auto;
-}
-
-:where(.worker-chat) .notification-btn {
-  position: relative;
-}
-
-:where(.worker-chat) .notification-btn::after {
-  content: '';
-  position: absolute;
-  right: 1px;
-  top: 0;
-  width: 13px;
-  height: 13px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: #fb4050;
-}
-
-:where(.worker-chat) .notification-icon {
-  width: 24px;
-  height: 24px;
 }
 
 :where(.worker-chat) .user-avatar-wrapper {
@@ -1348,6 +1287,8 @@ body:has(.worker-messages), body:has(.worker-chat) {
 
 /* ── Responsive: Mobile ── */
 @media (max-width: 360px) {
+  /* Keep the shared notification button clear of the centered chat logo. */
+  :where(.worker-chat) .header-actions { gap: 6px; }
   :where(.worker-messages) .main-content {
     padding-left: calc(12px + var(--safe-area-left));
     padding-right: calc(12px + var(--safe-area-right));
@@ -1536,4 +1477,3 @@ body:has(.worker-messages), body:has(.worker-chat) {
   .worker-messages *, .worker-messages *::before, .worker-messages *::after,
   .worker-chat *, .worker-chat *::before, .worker-chat *::after { animation: none; transition: none; scroll-behavior: auto; }
 }
-

@@ -1,0 +1,29 @@
+/* Shared drawer branding only. Drawer dimensions and menu styles stay owned
+   by the existing page/Customer drawer rules. */
+#root .offcanvas-drawer .drawer-top-row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+#root .offcanvas-drawer .drawer-top-row > .brand-logo {
+  position: static;
+  inset: auto;
+  transform: none;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  white-space: nowrap;
+  text-align: center;
+}
+
+#root .offcanvas-drawer .drawer-top-row > .drawer-close-btn {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+}

@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../../components/HireMeIcon";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HireMeIcon from "../../../components/HireMeIcon";
@@ -113,9 +114,7 @@ export default function WorkerVerify() {
           >
             <div className="reg-radio-indicator"></div>
             <div className="reg-method-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="email" /></svg>
             </div>
             <div className="reg-method-title">Via Email Address</div>
             <div className="reg-method-desc">Get a verification code via email to your Gmail address.</div>
@@ -156,9 +155,7 @@ export default function WorkerVerify() {
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
+                ><HireMeIconArtwork name="expand" /></svg>
               </span>
               <span className="reg-phone-divider"></span>
             </div>
@@ -188,9 +185,7 @@ export default function WorkerVerify() {
           </label>
           <div className="reg-input-pill">
             <div className="reg-input-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="email" /></svg>
             </div>
             <input
               type="email"
@@ -214,10 +209,7 @@ export default function WorkerVerify() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            ><HireMeIconArtwork name="forward" /></svg>
           </div>
         </Link>
       </div>

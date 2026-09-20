@@ -190,44 +190,6 @@ body:has(.worker-profile) {
   margin-left: auto;
 }
 
-:where(.worker-profile) .notification-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--profile-glass);
-  box-shadow: var(--profile-shadow);
-  border: none;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-dark);
-  transition: background-color 0.15s ease;
-}
-
-:where(.worker-profile) .notification-btn:hover {
-  background-color: rgba(15, 23, 42, 0.05);
-}
-
-:where(.worker-profile) .notification-btn::after {
-  content: '';
-  position: absolute;
-  right: 1px;
-  top: -1px;
-  width: 11px;
-  height: 11px;
-  border: 2px solid white;
-  border-radius: 50%;
-  background: #ff3545;
-}
-
-:where(.worker-profile) .notification-icon {
-  width: 21px;
-  height: 21px;
-  color: #293d78;
-}
-
 :where(.worker-profile) .user-avatar-link {
   display: block;
   text-decoration: none;

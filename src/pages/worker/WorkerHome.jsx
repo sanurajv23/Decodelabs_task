@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../components/HireMeIcon";
 import AppHeader from "../../components/AppHeader";
 import AppShell from "../../components/AppShell";
 import BottomNavigation from "../../components/BottomNavigation";
@@ -5,11 +6,13 @@ import Toast from "../../components/Toast";
 import WorkerDrawer from "../../components/WorkerDrawer";
 import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getCurrentUser } from "../../utils/auth";
 import "./WorkerHome.css";
 
 // Markup and SVG artwork preserved from pages/worker-home.html.
 export default function WorkerHome() {
   const navigate = useNavigate();
+  const user = getCurrentUser();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [toast, setToast] = useState("");
   const toastTimer = useRef(null);
@@ -99,7 +102,7 @@ export default function WorkerHome() {
         <main className="main-content" ref={mainRef}>
       <section className="greeting-section" aria-label="Worker Greeting">
         <h1 className="greeting-title">
-          Hello, Nimal! <span className="wave-hand" aria-hidden="true">👋</span>
+          Hello, {user.firstName}! <span className="wave-hand" aria-hidden="true">👋</span>
         </h1>
         <p className="greeting-subtitle">Ready for a productive day?</p>
       </section>
@@ -112,9 +115,7 @@ export default function WorkerHome() {
           </p>
           <Link to="/worker/jobs" id="heroViewJobsBtn" className="hero-cta-btn">
             <span>View Jobs</span>
-            <svg aria-hidden="true" className="hero-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+            <svg aria-hidden="true" className="hero-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="chevron" /></svg>
           </Link>
         </div>
         <svg aria-hidden="true" className="hero-growth" viewBox="0 0 210 210" fill="none">
@@ -146,18 +147,14 @@ export default function WorkerHome() {
         <div className="stats-grid">
           <div className="stat-card stat-card-jobs" role="button" tabIndex={0} onKeyDown={activateCard} onClick={() => navigate("/worker/jobs")}>
             <div className="stat-icon-wrapper">
-              <svg aria-hidden="true" className="stat-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
-              </svg>
+              <svg aria-hidden="true" className="stat-icon" viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="briefcase" /></svg>
             </div>
             <span className="stat-number">12</span>
             <span className="stat-title">Total Jobs</span>
           </div>
           <div className="stat-card stat-card-completed" role="button" tabIndex={0} onKeyDown={activateCard} onClick={() => showToast("📊 Completed: 10")}>
             <div className="stat-icon-wrapper">
-              <svg aria-hidden="true" className="stat-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
+              <svg aria-hidden="true" className="stat-icon" viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="verified" /></svg>
             </div>
             <span className="stat-number">10</span>
             <span className="stat-title">Completed</span>
@@ -173,9 +170,7 @@ export default function WorkerHome() {
           </div>
           <div className="stat-card stat-card-earnings" role="button" tabIndex={0} onKeyDown={activateCard} onClick={() => navigate("/worker/earnings")}>
             <div className="stat-icon-wrapper">
-              <svg aria-hidden="true" className="stat-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-              </svg>
+              <svg aria-hidden="true" className="stat-icon" viewBox="0 0 24 24" fill="currentColor"><HireMeIconArtwork name="balance" /></svg>
             </div>
             <span className="stat-number stat-number-currency">LKR 28,500</span>
             <span className="stat-title">Total Earnings</span>
@@ -187,9 +182,7 @@ export default function WorkerHome() {
           <h2 className="section-title">Today's Schedule</h2>
           <Link to="/worker/jobs" className="view-all-btn" aria-label="View all scheduled jobs">
             <span>View All</span>
-            <svg aria-hidden="true" className="view-all-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+            <svg aria-hidden="true" className="view-all-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="chevron" /></svg>
           </Link>
         </div>
         <article className="job-card" role="link" tabIndex={0} onKeyDown={activateCard} onClick={() => navigate("/worker/jobs")}>
@@ -201,17 +194,11 @@ export default function WorkerHome() {
           <div className="job-details">
             <h3 className="job-title">Electrical Repair</h3>
             <div className="job-meta-row">
-              <svg aria-hidden="true" className="meta-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
+              <svg aria-hidden="true" className="meta-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="address" /></svg>
               <span>No. 78, Kandy Road, Colombo 08</span>
             </div>
             <div className="job-meta-row customer-name">
-              <svg aria-hidden="true" className="meta-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
+              <svg aria-hidden="true" className="meta-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="user" /></svg>
               <span>Tharindu Silva</span>
             </div>
           </div>
@@ -228,9 +215,7 @@ export default function WorkerHome() {
           <h2 className="section-title">Upcoming Jobs</h2>
           <Link to="/worker/jobs" className="view-all-btn" aria-label="View all upcoming jobs">
             <span>View All</span>
-            <svg aria-hidden="true" className="view-all-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+            <svg aria-hidden="true" className="view-all-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="chevron" /></svg>
           </Link>
         </div>
         <article className="job-card" role="link" tabIndex={0} onKeyDown={activateCard} onClick={() => navigate("/worker/jobs")}>
@@ -243,25 +228,17 @@ export default function WorkerHome() {
           <div className="job-details">
             <h3 className="job-title">AC Repair</h3>
             <div className="job-meta-row">
-              <svg aria-hidden="true" className="meta-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                <circle cx="12" cy="10" r="3"></circle>
-              </svg>
+              <svg aria-hidden="true" className="meta-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="address" /></svg>
               <span>No. 123, Lake Road, Colombo 06</span>
             </div>
             <div className="job-meta-row customer-name">
-              <svg aria-hidden="true" className="meta-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
+              <svg aria-hidden="true" className="meta-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="user" /></svg>
               <span>Aruna Perera</span>
             </div>
           </div>
           <div className="job-status-wrapper">
             <span className="badge badge-confirmed">
-              <svg aria-hidden="true" className="badge-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
+              <svg aria-hidden="true" className="badge-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="check" /></svg>
               Confirmed
             </span>
           </div>
@@ -272,9 +249,7 @@ export default function WorkerHome() {
           <h2 className="section-title">Recent Activity</h2>
           <Link to="#recent-activity" className="view-all-btn" aria-label="View all activity logs" onClick={scrollToActivity}>
             <span>View All</span>
-            <svg aria-hidden="true" className="view-all-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
+            <svg aria-hidden="true" className="view-all-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><HireMeIconArtwork name="chevron" /></svg>
           </Link>
         </div>
         <ul className="activity-list">

@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../../components/HireMeIcon";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import HireMeIcon from "../../../components/HireMeIcon";
@@ -197,10 +198,7 @@ export default function WorkerVerificationCode() {
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
+            ><HireMeIconArtwork name="forward" /></svg>
           </div>
         </Link>
 

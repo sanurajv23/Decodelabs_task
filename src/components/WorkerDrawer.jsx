@@ -1,6 +1,27 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import HireMeIcon from "./HireMeIcon";
-import { logout } from "../utils/auth";
+import Logo from "./Logo";
+import { getRole, getCurrentUser, getProfile, logout } from "../utils/auth";
+import "./CustomerDrawer.css";
+import "./WorkerDrawer.css";
+
+const CUSTOMER_MENU = [
+  { path: "/customer/home", icon: "home", label: "Home" },
+  { path: "/customer/explore", icon: "explore", label: "Explore" },
+  { path: "/customer/bookings", icon: "bookings", label: "My Bookings" },
+  { path: "/customer/messages", icon: "messages", label: "Messages" },
+  { path: "/customer/profile", icon: "profile", label: "Profile" },
+];
+
+function getWorkerSubtitle() {
+  try {
+    const profile = getProfile("worker");
+    const parts = [profile.category, profile.area].filter(Boolean);
+    return parts.length ? parts.join(" • ") : "Worker";
+  } catch {
+    return "Worker";
+  }
+}
 
 export default function WorkerDrawer({
   isOpen,
@@ -9,31 +30,36 @@ export default function WorkerDrawer({
   closeRef,
   onShowToast,
   onLogout,
+  role,
 }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const isCustomer =
+    role === "customer" ||
+    (role !== "worker" &&
+      (location.pathname.startsWith("/customer") || getRole() === "customer"));
+
+  const user = getCurrentUser();
 
   return (
     <>
       <div
         id="drawerBackdrop"
-        className={`drawer-backdrop${isOpen ? " active" : ""}`}
+        className={`drawer-backdrop${isCustomer ? " customer-drawer-backdrop" : ""}${isOpen ? " active" : ""}`}
         onClick={onClose}
         aria-hidden="true"
       ></div>
       <aside
         id="offcanvasDrawer"
-        className={`offcanvas-drawer${isOpen ? " active" : ""}`}
+        className={`offcanvas-drawer${isCustomer ? " customer-drawer" : ""}${isOpen ? " active" : ""}`}
         ref={drawerRef}
         inert={!isOpen ? true : undefined}
         role="dialog"
         aria-modal={isOpen ? true : undefined}
-        aria-label="Worker App Menu"
+        aria-label={isCustomer ? "Customer App Menu" : "Worker App Menu"}
       >
         <div className="drawer-top-row">
-          <div className="brand-logo">
-            Hire<span className="logo-accent">Me</span>
-          </div>
+          <Logo />
           <button
             id="drawerCloseBtn"
             ref={closeRef}
@@ -50,11 +76,25 @@ export default function WorkerDrawer({
             <span className="online-status-dot" aria-hidden="true"></span>
           </div>
           <div>
-            <div className="drawer-user-name">Nimal Perera</div>
-            <div className="drawer-user-title">Electrician • Colombo</div>
+            <div className="drawer-user-name">{user.fullName}</div>
+            <div className="drawer-user-title">
+              {isCustomer ? "Your HireMe account" : getWorkerSubtitle()}
+            </div>
           </div>
         </div>
         <ul className="drawer-menu-list">
+          {isCustomer ? CUSTOMER_MENU.map((item) => (
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                className={`drawer-menu-link${location.pathname === item.path ? " active" : ""}`}
+                aria-current={location.pathname === item.path ? "page" : undefined}
+                onClick={onClose}
+              >
+                <HireMeIcon name={item.icon} /> {item.label}
+              </Link>
+            </li>
+          )) : <>
           <li>
             <Link
               to="/worker/home"
@@ -100,6 +140,7 @@ export default function WorkerDrawer({
               <HireMeIcon name="profile" /> My Profile
             </Link>
           </li>
+          </>}
           <li className="drawer-separator"></li>
           <li>
             <Link
@@ -108,10 +149,10 @@ export default function WorkerDrawer({
               onClick={(event) => {
                 event.preventDefault();
                 onClose();
-                onShowToast?.("⚙️ Settings will be available in future releases.");
+                onShowToast?.(isCustomer ? "Settings will be available in future releases." : "⚙️ Settings will be available in future releases.");
               }}
             >
-              <span>⚙️</span> Settings
+              {isCustomer ? <HireMeIcon name="settings" /> : <span>⚙️</span>} Settings
             </Link>
           </li>
           <li>
@@ -121,10 +162,10 @@ export default function WorkerDrawer({
               onClick={(event) => {
                 event.preventDefault();
                 onClose();
-                onShowToast?.("❓ Help & Support will be available in future releases.");
+                onShowToast?.(isCustomer ? "Help & Support will be available in future releases." : "❓ Help & Support will be available in future releases.");
               }}
             >
-              <span>❓</span> Help &amp; Support
+              {isCustomer ? <HireMeIcon name="help" /> : <span>❓</span>} Help &amp; Support
             </Link>
           </li>
           <li>
@@ -141,7 +182,7 @@ export default function WorkerDrawer({
                 }
               }}
             >
-              <span>🚪</span> Logout
+              {isCustomer ? <HireMeIcon name="logout-arrow" /> : <span>🚪</span>} Logout
             </Link>
           </li>
         </ul>
@@ -149,4 +190,3 @@ export default function WorkerDrawer({
     </>
   );
 }
-

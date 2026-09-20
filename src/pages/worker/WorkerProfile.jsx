@@ -1,3 +1,4 @@
+import { HireMeIconArtwork } from "../../components/HireMeIcon";
 import AppHeader from "../../components/AppHeader";
 import AppShell from "../../components/AppShell";
 import BottomNavigation from "../../components/BottomNavigation";
@@ -5,12 +6,14 @@ import Toast from "../../components/Toast";
 import WorkerDrawer from "../../components/WorkerDrawer";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../utils/auth";
+import { logout, getCurrentUser, getProfile } from "../../utils/auth";
 import "./WorkerProfile.css";
 
 // Markup and SVG artwork preserved from pages/worker-profile.html.
 export default function WorkerProfile() {
   const navigate = useNavigate();
+  const user = getCurrentUser();
+  const workerProfile = getProfile("worker");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [toast, setToast] = useState("");
   const [isOnline, setIsOnline] = useState(true);
@@ -136,8 +139,8 @@ export default function WorkerProfile() {
                   </svg>
                 </div>
                 <div className="profile-primary-info">
-                  <h2 className="profile-worker-name">Nimal Perera</h2>
-                  <span className="profile-worker-role">Electrician</span>
+                  <h2 className="profile-worker-name">{user.fullName}</h2>
+                  <span className="profile-worker-role">{workerProfile.category || "Worker"}</span>
                   <div className="profile-rating-row">
                     <span>★ 4.8</span>
                     <span className="profile-rating-reviews">(24 reviews)</span>
@@ -173,9 +176,7 @@ export default function WorkerProfile() {
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2.5"
-                  >
-                    <path d="m4 20 4-1 11-11a2 2 0 0 0-3-3L5 16l-1 4z" />
-                  </svg>
+                  ><HireMeIconArtwork name="edit" /></svg>
                   Edit Profile
                 </button>
               </div>
